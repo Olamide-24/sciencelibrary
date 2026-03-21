@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - Science Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">Science<span class="highlight">Library</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="subjects.html" class="active">Subjects</a>
+                <a href="book-viewer.html">Library</a>
+                <div class="auth-section" id="authSection">
+                    <a href="login.html" class="btn-login">Sign In</a>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Subject Header -->
+    <section class="subject-header" id="subjectHeader">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span id="currentSubject">All Subjects</span>
+            </div>
+            <h1 id="subjectTitle">All Subjects</h1>
+            <p id="subjectDesc">Browse all available subjects and start learning</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label>Subject:</label>
+                    <select id="subjectFilter" onchange="filterBySubject()">
+                        <option value="all">All Subjects</option>
+                        <option value="english">English</option>
+                        <option value="math">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                        <option value="further-math">Further Mathematics</option>
+                        <option value="computer">Computer Science</option>
+                        <option value="agriculture">Agriculture Science</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Level:</label>
+                    <select id="levelFilter" onchange="filterByLevel()">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                
+                <div class="search-filter">
+                    <input type="text" id="topicSearch" placeholder="Search topics..." onkeyup="searchTopics()">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section class="topics-section">
+        <div class="container">
+            <div id="topicsGrid" class="topics-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Books for this Subject -->
+    <section class="subject-books">
+        <div class="container">
+            <h2>Books in this Subject</h2>
+            <div id="subjectBooks" class="books-grid">
+                <p class="empty-state">Select a subject to see available books</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">📚</span>
+                    <span>ScienceLibrary</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Science Library</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/book.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Subject-specific data
+        const subjectData = {
+            english: {
+                title: "English Language",
+                desc: "Master grammar, literature, and communication skills",
+                icon: "📖",
+                color: "linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)",
+                topics: ["Grammar", "Essay Writing", "Comprehension", "Literature", "Oral English", "Phonetics"]
+            },
+            math: {
+                title: "Mathematics",
+                desc: "Numbers, algebra, geometry, and problem solving",
+                icon: "📐",
+                color: "linear-gradient(135deg, #3498db 0%, #2980b9 100%)",
+                topics: ["Algebra", "Geometry", "Trigonometry", "Calculus Basics", "Statistics", "Probability"]
+            },
+            physics: {
+                title: "Physics",
+                desc: "Understand the laws of nature and the universe",
+                icon: "⚛️",
+                color: "linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)",
+                topics: ["Mechanics", "Thermodynamics", "Waves", "Optics", "Electricity", "Modern Physics"]
+            },
+            chemistry: {
+                title: "Chemistry",
+                desc: "Explore matter, elements, and chemical reactions",
+                icon: "⚗️",
+                color: "linear-gradient(135deg, #1abc9c 0%, #16a085 100%)",
+                topics: ["Atomic Structure", "Periodic Table", "Chemical Bonding", "Stoichiometry", "Organic Chemistry", "Acids & Bases"]
+            },
+            biology: {
+                title: "Biology",
+                desc: "Discover the science of life and living organisms",
+                icon: "🧬",
+                color: "linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)",
+                topics: ["Cell Biology", "Genetics", "Ecology", "Human Anatomy", "Plant Biology", "Microbiology"]
+            },
+            "further-math": {
+                title: "Further Mathematics",
+                desc: "Advanced mathematical concepts and applications",
+                icon: "🔢",
+                color: "linear-gradient(135deg, #f39c12 0%, #e67e22 100%)",
+                topics: ["Complex Numbers", "Matrices", "Differential Equations", "Mechanics", "Statistics", "Linear Algebra"]
+            },
+            computer: {
+                title: "Computer Science",
+                desc: "Programming, algorithms, and computing theory",
+                icon: "💻",
+                color: "linear-gradient(135deg, #34495e 0%, #2c3e50 100%)",
+                topics: ["Programming Basics", "Data Structures", "Algorithms", "Databases", "Networking", "Web Development"]
+            },
+            agriculture: {
+                title: "Agriculture Science",
+                desc: "Modern farming, crop science, and animal husbandry",
+                icon: "🌱",
+                color: "linear-gradient(135deg, #27ae60 0%, #229954 100%)",
+                topics: ["Crop Production", "Soil Science", "Animal Husbandry", "Agricultural Economics", "Pest Management", "Farm Tools"]
+            }
+        };
+    </script>
+</body>
+</html>
