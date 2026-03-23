@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Science Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .auth-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+        
+        .auth-visual {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(5deg); }
+        }
+        
+        .visual-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .visual-logo {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .visual-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .visual-content p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .visual-features {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .v-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .v-feature span:first-child {
+            font-size: 1.5rem;
+        }
+        
+        .auth-form-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            background: var(--gray-50);
+        }
+        
+        .auth-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            width: 100%;
+            max-width: 440px;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-header h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+        
+        .auth-header p {
+            color: var(--gray-500);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--gray-100);
+            padding: 0.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .auth-tab.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .password-input {
+            position: relative;
+        }
+        
+        .toggle-pass {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.5;
+            font-size: 1.25rem;
+        }
+        
+        .toggle-pass:hover {
+            opacity: 1;
+        }
+        
+        .password-hint {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: 0.5rem;
+        }
+        
+        .btn-auth {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+        
+        .btn-auth:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-auth:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+        
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .forgot-password a {
+            font-size: 0.875rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 968px) {
+            .auth-split {
+                grid-template-columns: 1fr;
+            }
+            
+            .auth-visual {
+                display: none;
+            }
+            
+            .auth-form-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .auth-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-split">
+        <!-- Visual Side -->
+        <div class="auth-visual">
+            <div class="visual-content">
+                <div class="visual-logo">📚</div>
+                <h2>Science Library</h2>
+                <p>Master science step by step with our comprehensive digital learning platform</p>
+                
+                <div class="visual-features">
+                    <div class="v-feature">
+                        <span>📖</span>
+                        <span>50+ Digital Textbooks</span>
+                    </div>
+                    <div class="v-feature">
+                        <span>🎯</span>
+                        <span>Interactive Quizzes</span>
+                    </div>
+                    <div class="v-feature">
+                        <span>📊</span>
+                        <span>Progress Tracking</span>
+                    </div>
+                    <div class="v-feature">
+                        <span>🆓</span>
+                        <span>Completely Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form Side -->
+        <div class="auth-form-section">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1 id="authTitle">Welcome Back</h1>
+                    <p id="authSubtitle">Sign in to continue your learning journey</p>
+                </div>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchTab('login')" id="loginTab">Sign In</button>
+                    <button class="auth-tab" onclick="switchTab('signup')" id="signupTab">Create Account</button>
+                </div>
+                
+                <div id="errorMessage" class="error-message"></div>
+                <div id="successMessage" class="success-message"></div>
+                
+                <form id="authForm">
+                    <div class="form-group" id="nameGroup" style="display: none;">
+                        <label>Full Name</label>
+                        <input type="text" id="userName" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="userEmail" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="password-input">
+                            <input type="password" id="userPassword" placeholder="••••••••" required minlength="6">
+                            <button type="button" class="toggle-pass" onclick="togglePassword()">👁️</button>
+                        </div>
+                        <p class="password-hint">Must be at least 6 characters</p>
+                    </div>
+                    
+                    <div class="forgot-password" id="forgotPassword">
+                        <a href="#" onclick="handleForgotPassword(event)">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-auth" id="authButton">
+                        Sign In
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                
+                <div class="auth-footer">
+                    <p id="toggleText">Don't have an account? <a href="#" onclick="switchTab('signup'); return false;">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth, db } from './js/firebase-config.js';
+        import { 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            updateProfile,
+            sendPasswordResetEmail
+        } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+        import { 
+            doc, 
+            setDoc,
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+        
+        let currentMode = 'login';
+        
+        // Check URL params for mode
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('mode') === 'signup') {
+            switchTab('signup');
+        }
+        
+        window.switchTab = function(mode) {
+            currentMode = mode;
+            const loginTab = document.getElementById('loginTab');
+            const signupTab = document.getElementById('signupTab');
+            const nameGroup = document.getElementById('nameGroup');
+            const forgotPassword = document.getElementById('forgotPassword');
+            const authTitle = document.getElementById('authTitle');
+            const authSubtitle = document.getElementById('authSubtitle');
+            const authButton = document.getElementById('authButton');
+            const toggleText = document.getElementById('toggleText');
+            
+            if (mode === 'login') {
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+                nameGroup.style.display = 'none';
+                forgotPassword.style.display = 'block';
+                authTitle.textContent = 'Welcome Back';
+                authSubtitle.textContent = 'Sign in to continue your learning journey';
+                authButton.textContent = 'Sign In';
+                toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="switchTab(\'signup\'); return false;">Sign up</a>';
+            } else {
+                loginTab.classList.remove('active');
+                signupTab.classList.add('active');
+                nameGroup.style.display = 'block';
+                forgotPassword.style.display = 'none';
+                authTitle.textContent = 'Create Account';
+                authSubtitle.textContent = 'Join thousands of learners mastering science';
+                authButton.textContent = 'Create Account';
+                toggleText.innerHTML = 'Already have an account? <a href="#" onclick="switchTab(\'login\'); return false;">Sign in</a>';
+            }
+            
+            // Clear messages
+            hideMessages();
+        };
+        
+        window.togglePassword = function() {
+            const passwordInput = document.getElementById('userPassword');
+            const toggleBtn = document.querySelector('.toggle-pass');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        };
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+            setTimeout(() => errorDiv.classList.remove('show'), 5000);
+        }
+        
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.classList.add('show');
+            setTimeout(() => successDiv.classList.remove('show'), 5000);
+        }
+        
+        function hideMessages() {
+            document.getElementById('errorMessage').classList.remove('show');
+            document.getElementById('successMessage').classList.remove('show');
+        }
+        
+        window.handleForgotPassword = function(e) {
+            e.preventDefault();
+            const email = document.getElementById('userEmail').value;
+            if (!email) {
+                showError('Please enter your email address first');
+                return;
+            }
+            
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    showSuccess('Password reset email sent! Check your inbox.');
+                })
+                .catch((error) => {
+                    showError(getErrorMessage(error.code));
+                });
+        };
+        
+        function getErrorMessage(code) {
+            const messages = {
+                'auth/email-already-in-use': 'This email is already registered',
+                'auth/invalid-email': 'Please enter a valid email address',
+                'auth/weak-password': 'Password should be at least 6 characters',
+                'auth/user-not-found': 'No account found with this email',
+                'auth/wrong-password': 'Incorrect password',
+                'auth/invalid-credential': 'Invalid email or password',
+                'auth/too-many-requests': 'Too many attempts. Please try again later',
+                'auth/user-disabled': 'This account has been disabled'
+            };
+            return messages[code] || 'An error occurred. Please try again.';
+        }
+        
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const email = document.getElementById('userEmail').value;
+            const password = document.getElementById('userPassword').value;
+            const name = document.getElementById('userName').value;
+            const authButton = document.getElementById('authButton');
+            
+            // Show loading
+            const originalText = authButton.textContent;
+            authButton.innerHTML = originalText + '<span class="loading-spinner"></span>';
+            authButton.disabled = true;
+            
+            try {
+                if (currentMode === 'signup') {
+                    if (!name) {
+                        showError('Please enter your full name');
+                        return;
+                    }
+                    
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    
+                    await updateProfile(user, { displayName: name });
+                    
+                    // Create user document
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: name,
+                        createdAt: serverTimestamp(),
+                        lastLogin: serverTimestamp(),
+                        stats: {
+                            booksRead: 0,
+                            quizzesTaken: 0,
+                            totalScore: 0,
+                            averageScore: 0
+                        }
+                    });
+                    
+                    showSuccess('Account created successfully! Redirecting...');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'subjects.html';
+                    }, 1500);
+                    
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    showSuccess('Welcome back! Redirecting...');
+                    
+                    setTimeout(() => {
+                        const redirect = sessionStorage.getItem('redirectAfterLogin') || 'subjects.html';
+                        sessionStorage.removeItem('redirectAfterLogin');
+                        window.location.href = redirect;
+                    }, 1000);
+                }
+            } catch (error) {
+                showError(getErrorMessage(error.code));
+            } finally {
+                authButton.innerHTML = originalText;
+                authButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
