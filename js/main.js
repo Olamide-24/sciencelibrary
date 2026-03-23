@@ -2,7 +2,7 @@
 // MAIN JAVASCRIPT - CORE FUNCTIONALITY
 // ============================================
 
-import { currentUser } from './auth.js';
+import { currentUser, markjustloggedin } from './auth.js';
 
 // ============================================
 // INITIALIZATION
@@ -116,10 +116,7 @@ function showWelcomeMessage() {
     }
 }
 
-// Call this after successful login
-window.markJustLoggedIn = function() {
-    sessionStorage.setItem('justLoggedIn', 'true');
-};
+
 
 // ============================================
 // SEARCH FUNCTIONALITY
@@ -512,4 +509,4 @@ window.showNotification = function(message, type = 'info', duration = 3000) {
 };
 
 // Exports
-export { initDarkMode, showNotification, markJustLoggedIn };
+export { initDarkMode, showNotification };
