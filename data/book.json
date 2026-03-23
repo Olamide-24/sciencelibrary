@@ -1,0 +1,133 @@
+  "books": [
+    {
+      "id": "math-algebra-1",
+      "title": "Algebra Fundamentals",
+      "author": "Dr. Sarah Johnson",
+      "subject": "math",
+      "level": "beginner",
+      "description": "Comprehensive guide to algebraic concepts",
+      "filePath": "books/math/algebra-fundamentals.pdf",
+      "tags": ["algebra", "equations", "variables"]
+    },
+    {
+      "id": "math-calculus-1",
+      "title": "Introduction to Calculus",
+      "author": "Prof. Michael Chen",
+      "subject": "math",
+      "level": "advanced",
+      "description": "Limits, derivatives, and integrals explained",
+      "filePath": "books/math/calculus-intro.pdf",
+      "tags": ["calculus", "derivatives", "integrals"]
+    },
+    {
+      "id": "physics-mechanics-1",
+      "title": "Classical Mechanics",
+      "author": "Dr. Robert Brown",
+      "subject": "physics",
+      "level": "intermediate",
+      "description": "Newton's laws and motion principles",
+      "filePath": "books/physics/classical-mechanics.pdf",
+      "tags": ["mechanics", "newton", "motion"]
+    },
+    {
+      "id": "physics-electromagnetism-1",
+      "title": "Electromagnetism Basics",
+      "author": "Dr. Emily Davis",
+      "subject": "physics",
+      "level": "intermediate",
+      "description": "Electric and magnetic fields",
+      "filePath": "books/physics/electromagnetism.pdf",
+      "tags": ["electricity", "magnetism", "fields"]
+    },
+    {
+      "id": "chemistry-organic-1",
+      "title": "Organic Chemistry",
+      "author": "Prof. James Wilson",
+      "subject": "chemistry",
+      "level": "advanced",
+      "description": "Carbon compounds and reactions",
+      "filePath": "books/chemistry/organic-chemistry.pdf",
+      "tags": ["organic", "carbon", "reactions"]
+    },
+    {
+      "id": "chemistry-periodic-1",
+      "title": "Periodic Table Guide",
+      "author": "Dr. Lisa Anderson",
+      "subject": "chemistry",
+      "level": "beginner",
+      "description": "Understanding elements and their properties",
+      "filePath": "books/chemistry/periodic-table.pdf",
+      "tags": ["elements", "periodic-table", "atoms"]
+    },
+    {
+      "id": "biology-cell-1",
+      "title": "Cell Biology",
+      "author": "Dr. Maria Garcia",
+      "subject": "biology",
+      "level": "beginner",
+      "description": "Structure and function of cells",
+      "filePath": "books/biology/cell-biology.pdf",
+      "tags": ["cells", "organelles", "biology"]
+    },
+    {
+      "id": "biology-genetics-1",
+      "title": "Genetics and Heredity",
+      "author": "Prof. David Lee",
+      "subject": "biology",
+      "level": "intermediate",
+      "description": "DNA, genes, and inheritance patterns",
+      "filePath": "books/biology/genetics.pdf",
+      "tags": ["dna", "genes", "heredity"]
+    },
+    {
+      "id": "english-grammar-1",
+      "title": "English Grammar Essentials",
+      "author": "Dr. Patricia White",
+      "subject": "english",
+      "level": "beginner",
+      "description": "Rules and usage of English grammar",
+      "filePath": "books/english/grammar-essentials.pdf",
+      "tags": ["grammar", "syntax", "language"]
+    },
+    {
+      "id": "english-literature-1",
+      "title": "Introduction to Literature",
+      "author": "Prof. Thomas Martin",
+      "subject": "english",
+      "level": "intermediate",
+      "description": "Analysis of literary works",
+      "filePath": "books/english/literature.pdf",
+      "tags": ["literature", "analysis", "writing"]
+    },
+    {
+      "id": "fmath-linear-1",
+      "title": "Linear Algebra",
+      "author": "Dr. Richard Taylor",
+      "subject": "further-math",
+      "level": "advanced",
+      "description": "Matrices, vectors, and linear transformations",
+      "filePath": "books/further-math/linear-algebra.pdf",
+      "tags": ["matrices", "vectors", "linear"]
+    },
+    {
+      "id": "computer-programming-1",
+      "title": "Programming Fundamentals",
+      "author": "Prof. Jennifer Adams",
+      "subject": "computer",
+      "level": "beginner",
+      "description": "Introduction to programming concepts",
+      "filePath": "books/computer/programming-fundamentals.pdf",
+      "tags": ["programming", "coding", "algorithms"]
+    },
+    {
+      "id": "agriculture-crop-1",
+      "title": "Crop Science",
+      "author": "Dr. William Clark",
+      "subject": "agriculture",
+      "level": "intermediate",
+      "description": "Plant cultivation and crop management",
+      "filePath": "books/agriculture/crop-science.pdf",
+      "tags": ["crops", "farming", "agriculture"]
+    }
+  ]
+}
