@@ -312,12 +312,12 @@ function showMessage(message, type = 'info') {
 // WELCOME MESSAGE TRIGGER - DEFINED HERE
 // ============================================
 
-function markJustLoggedIn() {
+export function markJustLoggedIn() {
     sessionStorage.setItem('justLoggedIn', 'true');
 }
 
 // Exports
-export { currentUser, getCurrentUser, markJustLoggedIn };
+export { currentUser, getCurrentUser };
 
 function getCurrentUser() {
     return currentUser;
