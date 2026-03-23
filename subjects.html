@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - Science Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span>
+                <span class="logo-text">Science<span class="highlight">Library</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="subjects.html" class="active">Subjects</a>
+                <a href="book-viewer.html">Library</a>
+                <a href="quiz.html">Quizzes</a>
+                <a href="profile.html">Profile</a>
+                <div class="auth-section" id="authSection"></div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <section class="subject-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span id="currentSubject">All Subjects</span>
+            </div>
+            <h1 id="subjectTitle">All Subjects</h1>
+            <p id="subjectDesc">Browse all available subjects and start learning</p>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label>Subject:</label>
+                    <select id="subjectFilter" onchange="filterBySubject()">
+                        <option value="all">All Subjects</option>
+                        <option value="english">English</option>
+                        <option value="math">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                        <option value="further-math">Further Mathematics</option>
+                        <option value="computer">Computer Science</option>
+                        <option value="agriculture">Agriculture Science</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Level:</label>
+                    <select id="levelFilter" onchange="filterByLevel()">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="search-filter" style="flex: 1; max-width: 300px;">
+                    <input type="text" id="topicSearch" placeholder="Search topics..." onkeyup="searchTopics()" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="topics-section">
+        <div class="container">
+            <div id="topicsGrid" class="topics-grid">
+                <div class="topic-item" onclick="openTopic('english', 'Grammar')">
+                    <h4>Grammar</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('english', 'Essay Writing')">
+                    <h4>Essay Writing</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('math', 'Algebra')">
+                    <h4>Algebra</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('math', 'Geometry')">
+                    <h4>Geometry</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('physics', 'Mechanics')">
+                    <h4>Mechanics</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('physics', 'Thermodynamics')">
+                    <h4>Thermodynamics</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('chemistry', 'Atomic Structure')">
+                    <h4>Atomic Structure</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+                <div class="topic-item" onclick="openTopic('biology', 'Cell Biology')">
+                    <h4>Cell Biology</h4>
+                    <span class="topic-arrow">→</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subject-books">
+        <div class="container">
+            <h2 style="margin-bottom: 2rem;">Books in this Subject</h2>
+            <div id="subjectBooks" class="books-grid">
+                <p class="empty-state">Select a subject to see available books</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Science Library</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.subjectData = {
+            english: {
+                title: "English Language",
+                desc: "Master grammar, literature, and communication skills",
+                topics: ["Grammar", "Essay Writing", "Comprehension", "Literature", "Oral English", "Phonetics"]
+            },
+            math: {
+                title: "Mathematics",
+                desc: "Numbers, algebra, geometry, and problem solving",
+                topics: ["Algebra", "Geometry", "Trigonometry", "Calculus Basics", "Statistics", "Probability"]
+            },
+            physics: {
+                title: "Physics",
+                desc: "Understand the laws of nature and the universe",
+                topics: ["Mechanics", "Thermodynamics", "Waves", "Optics", "Electricity", "Modern Physics"]
+            },
+            chemistry: {
+                title: "Chemistry",
+                desc: "Explore matter, elements, and chemical reactions",
+                topics: ["Atomic Structure", "Periodic Table", "Chemical Bonding", "Stoichiometry", "Organic Chemistry", "Acids & Bases"]
+            },
+            biology: {
+                title: "Biology",
+                desc: "Discover the science of life and living organisms",
+                topics: ["Cell Biology", "Genetics", "Ecology", "Human Anatomy", "Plant Biology", "Microbiology"]
+            },
+            "further-math": {
+                title: "Further Mathematics",
+                desc: "Advanced mathematical concepts and applications",
+                topics: ["Complex Numbers", "Matrices", "Differential Equations", "Mechanics", "Statistics", "Linear Algebra"]
+            },
+            computer: {
+                title: "Computer Science",
+                desc: "Programming, algorithms, and computing theory",
+                topics: ["Programming Basics", "Data Structures", "Algorithms", "Databases", "Networking", "Web Development"]
+            },
+            agriculture: {
+                title: "Agriculture Science",
+                desc: "Modern farming, crop science, and animal husbandry",
+                topics: ["Crop Production", "Soil Science", "Animal Husbandry", "Agricultural Economics", "Pest Management", "Farm Tools"]
+            }
+        };
+    </script>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/book.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
