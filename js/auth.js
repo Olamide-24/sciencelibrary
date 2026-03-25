@@ -7,8 +7,8 @@ import {
     updateProfile
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { 
-    setDoc, 
     doc, 
+    setDoc, 
     serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -19,7 +19,7 @@ function generateRegId() {
     return `SCI-${year}-${random}`;
 }
 
-// Toggle password visibility
+// Toggle password
 window.togglePassword = function(inputId) {
     const input = document.getElementById(inputId);
     const button = input.nextElementSibling;
@@ -36,19 +36,15 @@ window.togglePassword = function(inputId) {
     }
 };
 
-// Show error message
 function showError(message) {
     const errorDiv = document.getElementById('errorMessage');
     if (errorDiv) {
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
-        setTimeout(() => {
-            errorDiv.style.display = 'none';
-        }, 5000);
+        setTimeout(() => errorDiv.style.display = 'none', 5000);
     }
 }
 
-// Show success message
 function showSuccess(message) {
     const successDiv = document.getElementById('successMessage');
     if (successDiv) {
@@ -57,20 +53,18 @@ function showSuccess(message) {
     }
 }
 
-// Set loading state
 function setLoading(buttonId, isLoading) {
     const btn = document.getElementById(buttonId);
     if (btn) {
+        btn.disabled = isLoading;
         const btnText = btn.querySelector('.btn-text');
         const btnLoader = btn.querySelector('.btn-loader');
-        
-        btn.disabled = isLoading;
         if (btnText) btnText.style.display = isLoading ? 'none' : 'inline';
-        if (btnLoader) btnLoader.style.display = isLoading ? 'inline-flex' : 'none';
+        if (btnLoader) btnLoader.style.display = isLoading ? 'inline' : 'none';
     }
 }
 
-// Handle Sign Up
+// SIGN UP
 const signupForm = document.getElementById('signupForm');
 if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
@@ -81,7 +75,6 @@ if (signupForm) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
         
-        // Validation
         if (!fullName || !email || !password || !confirmPassword) {
             showError('Please fill in all fields');
             return;
@@ -100,17 +93,17 @@ if (signupForm) {
         setLoading('signupBtn', true);
         
         try {
-            // Create user in Firebase Auth
+            // Create user
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             
-            // Update profile with full name
+            // Update profile
             await updateProfile(user, { displayName: fullName });
             
-            // Generate Registration ID
+            // Generate Reg ID
             const regId = generateRegId();
             
-            // Save user data to Firestore
+            // Save to Firestore - THIS AUTO-CREATES THE DOCUMENT
             await setDoc(doc(db, 'users', user.uid), {
                 uid: user.uid,
                 regId: regId,
@@ -119,29 +112,19 @@ if (signupForm) {
                 createdAt: serverTimestamp()
             });
             
-            showSuccess('Account created successfully! Redirecting...');
-            
-            // Redirect to dashboard after 1.5 seconds
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+            showSuccess('Account created! Redirecting...');
+            setTimeout(() => window.location.href = 'dashboard.html', 1500);
             
         } catch (error) {
             console.error('Signup error:', error);
             let errorMsg = 'Failed to create account';
             
-            switch(error.code) {
-                case 'auth/email-already-in-use':
-                    errorMsg = 'Email already registered. Please sign in.';
-                    break;
-                case 'auth/invalid-email':
-                    errorMsg = 'Invalid email address';
-                    break;
-                case 'auth/weak-password':
-                    errorMsg = 'Password is too weak';
-                    break;
-                default:
-                    errorMsg = error.message;
+            if (error.code === 'auth/email-already-in-use') {
+                errorMsg = 'Email already registered. Please sign in.';
+            } else if (error.code === 'auth/invalid-email') {
+                errorMsg = 'Invalid email address';
+            } else if (error.code === 'auth/weak-password') {
+                errorMsg = 'Password is too weak';
             }
             
             showError(errorMsg);
@@ -150,7 +133,7 @@ if (signupForm) {
     });
 }
 
-// Handle Login
+// LOGIN
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -173,21 +156,12 @@ if (loginForm) {
             console.error('Login error:', error);
             let errorMsg = 'Failed to sign in';
             
-            switch(error.code) {
-                case 'auth/user-not-found':
-                    errorMsg = 'No account found with this email';
-                    break;
-                case 'auth/wrong-password':
-                    errorMsg = 'Incorrect password';
-                    break;
-                case 'auth/invalid-email':
-                    errorMsg = 'Invalid email address';
-                    break;
-                case 'auth/too-many-requests':
-                    errorMsg = 'Too many attempts. Please try later';
-                    break;
-                default:
-                    errorMsg = error.message;
+            if (error.code === 'auth/user-not-found') {
+                errorMsg = 'No account found with this email';
+            } else if (error.code === 'auth/wrong-password') {
+                errorMsg = 'Incorrect password';
+            } else if (error.code === 'auth/invalid-email') {
+                errorMsg = 'Invalid email address';
             }
             
             showError(errorMsg);
@@ -196,25 +170,23 @@ if (loginForm) {
     });
 }
 
-// Check auth state and redirect if needed
+// Check auth state
 onAuthStateChanged(auth, (user) => {
     const publicPages = ['index.html', 'login.html', 'signup.html', ''];
     const currentPage = window.location.pathname.split('/').pop();
     
     if (user) {
-        // User is signed in - redirect from public pages to dashboard
         if (publicPages.includes(currentPage)) {
             window.location.href = 'dashboard.html';
         }
     } else {
-        // User is signed out - redirect from protected pages to login
         if (!publicPages.includes(currentPage) && !currentPage.includes('index')) {
             window.location.href = 'login.html';
         }
     }
 });
 
-// Logout function
+// GLOBAL LOGOUT FUNCTION
 window.logout = async function() {
     try {
         await signOut(auth);
@@ -224,4 +196,3 @@ window.logout = async function() {
         alert('Failed to logout. Please try again.');
     }
 };
-
