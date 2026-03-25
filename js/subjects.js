@@ -1,4 +1,4 @@
-import { auth, db } from './firebase-config(1).js';
+import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // Global logout
