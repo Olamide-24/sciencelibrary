@@ -1,6 +1,4 @@
 
-import json
-quiz_data = {
     "mathematics": [
         {
             "question": "What is the value of x in the equation 2x + 5 = 15?",
@@ -80,5 +78,5 @@ quiz_data = {
         }
     ]
     
-}
+
 
