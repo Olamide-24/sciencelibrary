@@ -1,131 +1,89 @@
-import { auth, db } from './firebase-config.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { auth, db } from './js/firebase-config.js';
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, getDoc, collection, query, where, getDocs, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Wait for DOM to be fully loaded before running
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Dashboard: DOM loaded, waiting for auth...');
+// Global logout function
+window.logout = async function() {
+    try {
+        await signOut(auth);
+        window.location.href = 'index.html';
+    } catch (error) {
+        alert('Failed to logout: ' + error.message);
+    }
+};
+
+// Check auth and load data immediately
+onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+        window.location.href = 'login.html';
+        return;
+    }
     
-    // Check auth state
-    onAuthStateChanged(auth, async (user) => {
-        console.log('Dashboard: Auth state changed:', user ? `User ${user.uid}` : 'No user');
-        
-        if (!user) {
-            console.log('Dashboard: No user, redirecting to login...');
-            window.location.href = 'login.html';
-            return;
-        }
-        
-        console.log('Dashboard: User authenticated:', user.email);
-        console.log('Dashboard: User displayName from Auth:', user.displayName);
-        
-        // User is logged in - load all data
-        try {
-            await loadUserData(user);
-            await loadQuizStats(user.uid);
-            await loadQuizGrid();
-            console.log('Dashboard: All data loaded successfully');
-        } catch (error) {
-            console.error('Dashboard: Error loading data:', error);
-        }
-    });
+    // User is logged in - load data
+    await loadUserData(user);
+    await loadQuizStats(user.uid);
+    await loadQuizGrid();
 });
 
 async function loadUserData(user) {
     const uid = user.uid;
-    console.log('Dashboard: Loading user data for UID:', uid);
     
     try {
-        const userDocRef = doc(db, 'users', uid);
-        console.log('Dashboard: Fetching Firestore document:', userDocRef.path);
-        
-        const userDoc = await getDoc(userDocRef);
-        console.log('Dashboard: Firestore document exists:', userDoc.exists());
+        const userDoc = await getDoc(doc(db, 'users', uid));
         
         if (userDoc.exists()) {
             const data = userDoc.data();
-            console.log('Dashboard: Firestore data:', data);
             
-            // Update nav user name
+            // Update all user name elements
             const userNameEl = document.getElementById('userName');
-            if (userNameEl) {
-                userNameEl.textContent = data.fullName || user.displayName || 'Student';
-                console.log('Dashboard: Set userName to:', userNameEl.textContent);
-            }
-            
-            // Update welcome name (first name only)
             const welcomeNameEl = document.getElementById('welcomeName');
-            if (welcomeNameEl) {
-                const fullName = data.fullName || user.displayName || 'Student';
-                welcomeNameEl.textContent = fullName.split(' ')[0];
-                console.log('Dashboard: Set welcomeName to:', welcomeNameEl.textContent);
-            }
-            
-            // Update reg ID
             const regIdEl = document.getElementById('regId');
-            if (regIdEl) {
-                regIdEl.textContent = data.regId || 'N/A';
-                console.log('Dashboard: Set regId to:', regIdEl.textContent);
-            }
+            
+            if (userNameEl) userNameEl.textContent = data.fullName || user.displayName || 'Student';
+            if (welcomeNameEl) welcomeNameEl.textContent = (data.fullName || user.displayName || 'Student').split(' ')[0];
+            if (regIdEl) regIdEl.textContent = data.regId || 'N/A';
             
         } else {
-            console.error('Dashboard: User document NOT FOUND in Firestore!');
-            console.log('Dashboard: Using Auth fallback data...');
+            // User document not found - create it now
+            console.log('Creating missing user document...');
             
-            // Fallback to Auth data if Firestore doc missing
+            const year = new Date().getFullYear();
+            const random = Math.random().toString(36).substring(2, 6).toUpperCase();
+            const regId = `SCI-${year}-${random}`;
+            
+            await setDoc(doc(db, 'users', uid), {
+                uid: uid,
+                regId: regId,
+                fullName: user.displayName || 'Student',
+                email: user.email,
+                createdAt: serverTimestamp()
+            });
+            
+            // Update UI with new data
             const userNameEl = document.getElementById('userName');
             const welcomeNameEl = document.getElementById('welcomeName');
+            const regIdEl = document.getElementById('regId');
             
-            const displayName = user.displayName || 'Student';
-            
-            if (userNameEl) userNameEl.textContent = displayName;
-            if (welcomeNameEl) welcomeNameEl.textContent = displayName.split(' ')[0];
-            
-            // Try to recreate user document if missing
-            console.log('Dashboard: Attempting to recreate user document...');
-            try {
-                const { setDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-                const year = new Date().getFullYear();
-                const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-                const regId = `SCI-${year}-${random}`;
-                
-                await setDoc(doc(db, 'users', uid), {
-                    uid: uid,
-                    regId: regId,
-                    fullName: user.displayName || 'Student',
-                    email: user.email,
-                    createdAt: serverTimestamp()
-                });
-                
-                console.log('Dashboard: User document recreated successfully');
-                
-                // Update reg ID display
-                const regIdEl = document.getElementById('regId');
-                if (regIdEl) regIdEl.textContent = regId;
-                
-            } catch (recreateError) {
-                console.error('Dashboard: Failed to recreate user document:', recreateError);
-            }
+            if (userNameEl) userNameEl.textContent = user.displayName || 'Student';
+            if (welcomeNameEl) welcomeNameEl.textContent = (user.displayName || 'Student').split(' ')[0];
+            if (regIdEl) regIdEl.textContent = regId;
         }
     } catch (error) {
-        console.error('Dashboard: Error loading user data:', error);
-        console.error('Dashboard: Error code:', error.code);
-        console.error('Dashboard: Error message:', error.message);
+        console.error('Error loading user data:', error);
         
-        // Show error in UI
+        // Fallback to Auth data
         const userNameEl = document.getElementById('userName');
-        if (userNameEl) userNameEl.textContent = 'Error loading';
+        const welcomeNameEl = document.getElementById('welcomeName');
+        
+        if (userNameEl) userNameEl.textContent = user.displayName || 'Student';
+        if (welcomeNameEl) welcomeNameEl.textContent = (user.displayName || 'Student').split(' ')[0];
     }
 }
 
 async function loadQuizStats(uid) {
-    console.log('Dashboard: Loading quiz stats for UID:', uid);
-    
     try {
         const q = query(collection(db, 'quizResults'), where('userId', '==', uid));
         const querySnapshot = await getDocs(q);
-        
-        console.log('Dashboard: Quiz results found:', querySnapshot.size);
         
         let totalQuizzes = 0;
         let totalScore = 0;
@@ -139,102 +97,54 @@ async function loadQuizStats(uid) {
         const quizzesEl = document.getElementById('quizzesTaken');
         const avgEl = document.getElementById('avgScore');
         
-        if (quizzesEl) {
-            quizzesEl.textContent = totalQuizzes;
-            console.log('Dashboard: Set quizzesTaken to:', totalQuizzes);
-        }
-        
-        if (avgEl) {
-            avgEl.textContent = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) + '%' : '0%';
-            console.log('Dashboard: Set avgScore to:', avgEl.textContent);
-        }
+        if (quizzesEl) quizzesEl.textContent = totalQuizzes;
+        if (avgEl) avgEl.textContent = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) + '%' : '0%';
         
     } catch (error) {
-        console.error('Dashboard: Error loading quiz stats:', error);
+        console.error('Error loading quiz stats:', error);
     }
 }
 
 async function loadQuizGrid() {
-    console.log('Dashboard: Loading quiz grid...');
-    
     try {
-        // Try multiple possible paths for quiz.json
-        let quizzes = {};
-        const possiblePaths = [
-            'data/quiz.json',
-            './data/quiz.json',
-            '../data/quiz.json',
-n            'quiz.json'
+        const response = await fetch('data/quiz.json');
+        const quizzes = await response.json();
+        
+        const grid = document.getElementById('quizGrid');
+        if (!grid) return;
+        
+        grid.innerHTML = '';
+        
+        const subjects = [
+            { id: 'mathematics', name: 'Mathematics', icon: 'fa-square-root-alt', color: '#f59e0b' },
+            { id: 'english', name: 'English', icon: 'fa-language', color: '#ec4899' },
+            { id: 'physics', name: 'Physics', icon: 'fa-atom', color: '#06b6d4' },
+            { id: 'chemistry', name: 'Chemistry', icon: 'fa-flask', color: '#10b981' },
+            { id: 'biology', name: 'Biology', icon: 'fa-dna', color: '#8b5cf6' },
+            { id: 'computer', name: 'Computer', icon: 'fa-laptop-code', color: '#6366f1' },
+            { id: 'agriculture', name: 'Agriculture', icon: 'fa-seedling', color: '#84cc16' },
+            { id: 'further-math', name: 'Further Math', icon: 'fa-calculator', color: '#f43f5e' }
         ];
         
-        let response = null;
-        for (const path of possiblePaths) {
-            try {
-                console.log('Dashboard: Trying to fetch quiz from:', path);
-                const res = await fetch(path);
-                if (res.ok) {
-                    response = res;
-                    console.log('Dashboard: Successfully fetched quiz from:', path);
-                    break;
-                }
-            } catch (e) {
-                console.log('Dashboard: Failed to fetch from:', path);
-            }
-        }
-        
-        if (!response) {
-            console.error('Dashboard: Could not find quiz.json in any location');
-            renderQuizGrid({});
-            return;
-        }
-        
-        quizzes = await response.json();
-        console.log('Dashboard: Quizzes loaded:', Object.keys(quizzes));
-        renderQuizGrid(quizzes);
+        subjects.forEach(subj => {
+            const hasQuiz = quizzes[subj.id] && quizzes[subj.id].length > 0;
+            const card = document.createElement('div');
+            card.className = 'quiz-card';
+            card.innerHTML = `
+                <div class="quiz-card-icon" style="background: ${subj.color}20; color: ${subj.color}">
+                    <i class="fas ${subj.icon}"></i>
+                </div>
+                <h3>${subj.name}</h3>
+                <p>${hasQuiz ? quizzes[subj.id].length + ' questions' : 'No questions'}</p>
+                <a href="quiz.html?subject=${subj.id}" class="btn ${hasQuiz ? 'btn-primary' : 'btn-outline'}">
+                    ${hasQuiz ? 'Start Quiz' : 'Not Available'}
+                </a>
+            `;
+            grid.appendChild(card);
+        });
         
     } catch (error) {
-        console.error('Dashboard: Error loading quizzes:', error);
-        renderQuizGrid({});
+        console.error('Error loading quizzes:', error);
     }
-}
-
-function renderQuizGrid(quizzes) {
-    const grid = document.getElementById('quizGrid');
-    if (!grid) {
-        console.error('Dashboard: quizGrid element not found!');
-        return;
-    }
+                   }
     
-    grid.innerHTML = '';
-    
-    const subjects = [
-        { id: 'mathematics', name: 'Mathematics', icon: 'fa-square-root-alt', color: '#f59e0b' },
-        { id: 'english', name: 'English', icon: 'fa-language', color: '#ec4899' },
-        { id: 'physics', name: 'Physics', icon: 'fa-atom', color: '#06b6d4' },
-        { id: 'chemistry', name: 'Chemistry', icon: 'fa-flask', color: '#10b981' },
-        { id: 'biology', name: 'Biology', icon: 'fa-dna', color: '#8b5cf6' },
-        { id: 'computer', name: 'Computer', icon: 'fa-laptop-code', color: '#6366f1' },
-        { id: 'agriculture', name: 'Agriculture', icon: 'fa-seedling', color: '#84cc16' },
-        { id: 'further-math', name: 'Further Math', icon: 'fa-calculator', color: '#f43f5e' }
-    ];
-    
-    subjects.forEach(subj => {
-        const hasQuiz = quizzes[subj.id] && quizzes[subj.id].length > 0;
-        const card = document.createElement('div');
-        card.className = 'quiz-card';
-        card.innerHTML = `
-            <div class="quiz-card-icon" style="background: ${subj.color}20; color: ${subj.color}">
-                <i class="fas ${subj.icon}"></i>
-            </div>
-            <h3>${subj.name}</h3>
-            <p>${hasQuiz ? quizzes[subj.id].length + ' questions' : 'No questions'}</p>
-            <a href="quiz.html?subject=${subj.id}" class="btn ${hasQuiz ? 'btn-primary' : 'btn-outline'}">
-                ${hasQuiz ? 'Start Quiz' : 'Not Available'}
-            </a>
-        `;
-        grid.appendChild(card);
-    });
-    
-    console.log('Dashboard: Quiz grid rendered with', subjects.length, 'subjects');
-}
-
