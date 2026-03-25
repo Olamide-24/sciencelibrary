@@ -17,16 +17,21 @@ async function loadProfile(uid) {
         if (userDoc.exists()) {
             const data = userDoc.data();
             
-            document.getElementById('navUserName').textContent = data.fullName || 'Student';
-            document.getElementById('profileName').textContent = data.fullName || 'Student';
-            document.getElementById('profileEmail').textContent = data.email || '';
-            document.getElementById('displayRegId').textContent = data.regId || 'N/A';
+            // Update all elements
+            const navUserName = document.getElementById('navUserName');
+            const profileName = document.getElementById('profileName');
+            const profileEmail = document.getElementById('profileEmail');
+            const displayRegId = document.getElementById('displayRegId');
+            const memberSince = document.getElementById('memberSince');
             
-            if (data.createdAt) {
+            if (navUserName) navUserName.textContent = data.fullName || 'Student';
+            if (profileName) profileName.textContent = data.fullName || 'Student';
+            if (profileEmail) profileEmail.textContent = data.email || '';
+            if (displayRegId) displayRegId.textContent = data.regId || 'N/A';
+            
+            if (memberSince && data.createdAt) {
                 const date = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
-                document.getElementById('memberSince').textContent = date.toLocaleDateString('en-US', { 
-                    month: 'long', year: 'numeric' 
-                });
+                memberSince.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
             }
         }
     } catch (error) {
@@ -45,6 +50,10 @@ async function loadQuizHistory(uid) {
         
         const querySnapshot = await getDocs(q);
         const historyList = document.getElementById('quizHistory');
+        const statQuizzes = document.getElementById('statQuizzes');
+        const statAccuracy = document.getElementById('statAccuracy');
+        
+        if (!historyList) return;
         
         if (querySnapshot.empty) {
             historyList.innerHTML = `
@@ -54,6 +63,8 @@ async function loadQuizHistory(uid) {
                     <a href="dashboard.html#quizzes" class="btn btn-primary">Take Quiz</a>
                 </div>
             `;
+            if (statQuizzes) statQuizzes.textContent = '0';
+            if (statAccuracy) statAccuracy.textContent = '0%';
             return;
         }
         
@@ -84,9 +95,8 @@ async function loadQuizHistory(uid) {
         
         historyList.innerHTML = html;
         
-        // Update stats
-        document.getElementById('statQuizzes').textContent = totalQuizzes;
-        document.getElementById('statAccuracy').textContent = Math.round(totalScore / totalQuizzes) + '%';
+        if (statQuizzes) statQuizzes.textContent = totalQuizzes;
+        if (statAccuracy) statAccuracy.textContent = Math.round(totalScore / totalQuizzes) + '%';
         
     } catch (error) {
         console.error('Error loading quiz history:', error);
@@ -102,8 +112,7 @@ window.showEditProfile = function() {
 };
 
 window.confirmDeleteAccount = function() {
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    if (confirm('Are you sure you want to delete your account?')) {
         alert('Account deletion request submitted.');
     }
 };
-
