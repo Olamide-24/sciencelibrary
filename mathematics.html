@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics - Science Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas {icon_class}"></i>
+            </div>
+            <div class="subject-info">
+                <h1>{subject_name}</h1>
+                <p>{description}</p>
+            </div>
+        </header>
+
+        <!-- READING CONTENT - JUST SCROLL DOWN TO READ -->
+        <div class="reading-container">
+            
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Introduction</h2>
+                
+                <div class="chapter-content">
+                    <p>Your notes here. Write as much as you want. This is a scrollable section.</p>
+                    
+                    <h3>Topic 1.1</h3>
+                    <p>More content here...</p>
+                    
+                    <h3>Topic 1.2</h3>
+                    <p>More content here...</p>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Main Concepts</h2>
+                
+                <div class="chapter-content">
+                    <p>Your notes here...</p>
+                    
+                    <h3>Topic 2.1</h3>
+                    <p>Content...</p>
+                    
+                    <div class="formula">Formula here if needed</div>
+                    
+                    <h3>Topic 2.2</h3>
+                    <p>Content...</p>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Advanced Topics</h2>
+                
+                <div class="chapter-content">
+                    <p>Your notes here...</p>
+                    
+                    <h3>Topic 3.1</h3>
+                    <p>Content...</p>
+                    
+                    <h3>Topic 3.2</h3>
+                    <p>Content...</p>
+                </div>
+            </section>
+
+            <!-- ADD MORE CHAPTERS BY COPYING THE SECTION ABOVE -->
+
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject={subject_id}" class="btn btn-quiz">
+                <i class="fas fa-question-circle"></i>
+                Take {subject_name} Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
