@@ -1,0 +1,84 @@
+
+
+quiz_data = {
+    "mathematics": [
+        {
+            "question": "What is the value of x in the equation 2x + 5 = 15?",
+            "options": ["3", "5", "7", "10"],
+            "correct": 1
+        },
+        {
+            "question": "What is the area of a circle with radius 7? (Use π = 22/7)",
+            "options": ["154", "44", "88", "308"],
+            "correct": 0
+        },
+        {
+            "question": "If a triangle has angles 60°, 60°, and 60°, what type of triangle is it?",
+            "options": ["Isosceles", "Scalene", "Equilateral", "Right-angled"],
+            "correct": 2
+        },
+        {
+            "question": "What is the square root of 144?",
+            "options": ["10", "11", "12", "14"],
+            "correct": 2
+        },
+        {
+            "question": "Solve: 3x - 7 = 20",
+            "options": ["7", "9", "11", "13"],
+            "correct": 1
+        }
+    ],
+    "physics": [
+        {
+            "question": "What is the SI unit of force?",
+            "options": ["Watt", "Newton", "Joule", "Pascal"],
+            "correct": 1
+        },
+        {
+            "question": "What is the acceleration due to gravity on Earth?",
+            "options": ["8.9 m/s²", "9.8 m/s²", "10.2 m/s²", "11.0 m/s²"],
+            "correct": 1
+        },
+        {
+            "question": "Which law states that energy cannot be created or destroyed?",
+            "options": ["Newton's First Law", "Law of Conservation of Energy", "Ohm's Law", "Boyle's Law"],
+            "correct": 1
+        }
+    ],
+    "chemistry": [
+        {
+            "question": "What is the chemical symbol for gold?",
+            "options": ["Go", "Gd", "Au", "Ag"],
+            "correct": 2
+        },
+        {
+            "question": "What is the pH value of pure water?",
+            "options": ["0", "7", "14", "1"],
+            "correct": 1
+        },
+        {
+            "question": "Which gas is most abundant in Earth's atmosphere?",
+            "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+            "correct": 2
+        }
+    ],
+    "biology": [
+        {
+            "question": "What is the powerhouse of the cell?",
+            "options": ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"],
+            "correct": 1
+        },
+        {
+            "question": "Which blood cells are responsible for fighting infections?",
+            "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma cells"],
+            "correct": 1
+        },
+        {
+            "question": "What is the process by which plants make their food?",
+            "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+            "correct": 1
+        }
+    ]
+    
+}
+
