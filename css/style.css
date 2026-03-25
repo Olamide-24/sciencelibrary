@@ -635,4 +635,358 @@ body {
 
 .auth-footer a:hover {
     text-decoration: underline;
+   
 }
+
+/* ==================== 
+   CSS PART 4: DASHBOARD
+   ==================== */
+
+.dashboard-page {
+    background: var(--dark);
+    min-height: 100vh;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--dark-light);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    color: var(--gray-light);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-user span {
+    font-weight: 600;
+    color: var(--light);
+}
+
+.dashboard-main {
+    padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: var(--dark-light);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-section h1 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+    color: var(--gray-light);
+}
+
+.reg-id-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--gradient-1);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.reg-id-badge i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.reg-label {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    color: var(--white);
+}
+
+.reg-value {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--white);
+    font-family: monospace;
+}
+
+/* Action Hub */
+.action-hub {
+    margin-bottom: 3rem;
+}
+
+.action-hub h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.hub-card {
+    background: var(--dark-light);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hub-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.hub-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hub-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-xl);
+}
+
+.hub-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hub-icon i {
+    font-size: 1.75rem;
+    color: var(--primary);
+}
+
+.hub-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.hub-card p {
+    color: var(--gray-light);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.hub-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Subjects Section */
+.subjects-section {
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-header h2 i {
+    color: var(--primary);
+}
+
+.section-header p {
+    color: var(--gray-light);
+}
+
+.subjects-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.subject-card {
+    background: var(--dark-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.subject-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.subject-icon i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.subject-icon.math { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.subject-icon.english { background: linear-gradient(135deg, #ec4899, #db2777); }
+.subject-icon.physics { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.subject-icon.chemistry { background: linear-gradient(135deg, #10b981, #059669); }
+.subject-icon.biology { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.subject-icon.computer { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.subject-icon.agriculture { background: linear-gradient(135deg, #84cc16, #65a30d); }
+.subject-icon.further-math { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+
+.subject-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.subject-card p {
+    color: var(--gray-light);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.topics-count {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Progress Section */
+.progress-section {
+    margin-bottom: 3rem;
+}
+
+.progress-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.progress-card {
+    background: var(--dark-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-icon i {
+    font-size: 1.25rem;
+    color: var(--primary);
+}
+
+.progress-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.progress-label {
+    font-size: 0.875rem;
+    color: var(--gray-light);
+}
+
