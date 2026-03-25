@@ -2,37 +2,41 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Check auth state
+// Check auth and load data
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
         window.location.href = 'login.html';
         return;
     }
     
-    // Load user data
+    // User is logged in - load data
     await loadUserData(user.uid);
     await loadQuizStats(user.uid);
     await loadQuizGrid();
 });
 
-// Load user data
 async function loadUserData(uid) {
     try {
         const userDoc = await getDoc(doc(db, 'users', uid));
         if (userDoc.exists()) {
             const data = userDoc.data();
             
-            // Update UI
-            document.getElementById('userName').textContent = data.fullName || 'Student';
-            document.getElementById('welcomeName').textContent = data.fullName?.split(' ')[0] || 'Student';
-            document.getElementById('regId').textContent = data.regId || 'N/A';
+            // Update all user name elements
+            const userNameEl = document.getElementById('userName');
+            const welcomeNameEl = document.getElementById('welcomeName');
+            const regIdEl = document.getElementById('regId');
+            
+            if (userNameEl) userNameEl.textContent = data.fullName || 'Student';
+            if (welcomeNameEl) welcomeNameEl.textContent = data.fullName?.split(' ')[0] || 'Student';
+            if (regIdEl) regIdEl.textContent = data.regId || 'N/A';
+        } else {
+            console.log('User document not found');
         }
     } catch (error) {
         console.error('Error loading user data:', error);
     }
 }
 
-// Load quiz statistics
 async function loadQuizStats(uid) {
     try {
         const q = query(collection(db, 'quizResults'), where('userId', '==', uid));
@@ -40,50 +44,32 @@ async function loadQuizStats(uid) {
         
         let totalQuizzes = 0;
         let totalScore = 0;
-        let subjectScores = {};
         
         querySnapshot.forEach((doc) => {
             const data = doc.data();
             totalQuizzes++;
             totalScore += data.percentage || 0;
-            
-            // Track best subject
-            if (!subjectScores[data.subject]) {
-                subjectScores[data.subject] = [];
-            }
-            subjectScores[data.subject].push(data.percentage);
         });
         
-        // Update UI
-        document.getElementById('quizzesTaken').textContent = totalQuizzes;
+        const quizzesEl = document.getElementById('quizzesTaken');
+        const avgEl = document.getElementById('avgScore');
         
-        const avgScore = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) : 0;
-        document.getElementById('avgScore').textContent = avgScore + '%';
-        
-        // Find best subject
-        let bestSubject = '-';
-        let bestAvg = 0;
-        for (const [subject, scores] of Object.entries(subjectScores)) {
-            const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-            if (avg > bestAvg) {
-                bestAvg = avg;
-                bestSubject = subject.charAt(0).toUpperCase() + subject.slice(1);
-            }
-        }
-        document.getElementById('bestSubject').textContent = bestSubject;
+        if (quizzesEl) quizzesEl.textContent = totalQuizzes;
+        if (avgEl) avgEl.textContent = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) + '%' : '0%';
         
     } catch (error) {
         console.error('Error loading quiz stats:', error);
     }
 }
 
-// Load quiz grid
 async function loadQuizGrid() {
     try {
         const response = await fetch('data/quiz.json');
         const quizzes = await response.json();
         
         const grid = document.getElementById('quizGrid');
+        if (!grid) return;
+        
         grid.innerHTML = '';
         
         const subjects = [
@@ -106,7 +92,7 @@ async function loadQuizGrid() {
                     <i class="fas ${subj.icon}"></i>
                 </div>
                 <h3>${subj.name}</h3>
-                <p>${hasQuiz ? quizzes[subj.id].length + ' questions available' : 'No questions available'}</p>
+                <p>${hasQuiz ? quizzes[subj.id].length + ' questions' : 'No questions'}</p>
                 <a href="quiz.html?subject=${subj.id}" class="btn ${hasQuiz ? 'btn-primary' : 'btn-outline'}">
                     ${hasQuiz ? 'Start Quiz' : 'Not Available'}
                 </a>
@@ -118,4 +104,3 @@ async function loadQuizGrid() {
         console.error('Error loading quizzes:', error);
     }
 }
-
