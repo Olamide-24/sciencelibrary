@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology - Science Library</title>
+    <meta name="description" content="Learn Biology - Cell Biology, Genetics, Ecology, and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-dna"></i>
+            </div>
+            <div class="subject-info">
+                <h1>Biology</h1>
+                <p>Cell Biology, Genetics, Ecology, and more</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Cell Structure</h2>
+                <div class="chapter-content">
+                    <p>The cell is the basic unit of life.</p>
+                    
+                    <h3>1.1 Cell Theory</h3>
+                    <ul>
+                        <li>All living things are made of cells</li>
+                        <li>Cells are the basic unit of structure and function</li>
+                        <li>All cells come from pre-existing cells</li>
+                    </ul>
+                    
+                    <h3>1.2 Cell Organelles</h3>
+                    <ul>
+                        <li>Nucleus: Control center, contains DNA</li>
+                        <li>Mitochondria: Powerhouse, produces ATP</li>
+                        <li>Ribosomes: Protein synthesis</li>
+                        <li>Cell membrane: Selective barrier</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Genetics</h2>
+                <div class="chapter-content">
+                    <p>The study of heredity and variation.</p>
+                    
+                    <h3>2.1 DNA Structure</h3>
+                    <p>Double helix structure with nucleotide bases: A, T, G, C.</p>
+                    <div class="formula">A pairs with T, G pairs with C</div>
+                    
+                    <h3>2.2 Mendel's Laws</h3>
+                    <ul>
+                        <li>Law of Segregation: Alleles separate during gamete formation</li>
+                        <li>Law of Independent Assortment: Genes assort independently</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Ecology</h2>
+                <div class="chapter-content">
+                    <p>Interactions between organisms and environment.</p>
+                    
+                    <h3>3.1 Ecosystem Components</h3>
+                    <ul>
+                        <li>Producers: Plants (autotrophs)</li>
+                        <li>Consumers: Animals (heterotrophs)</li>
+                        <li>Decomposers: Bacteria and fungi</li>
+                    </ul>
+                    
+                    <h3>3.2 Food Chains and Webs</h3>
+                    <p>Energy flow through trophic levels.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=biology" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take Biology Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
