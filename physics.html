@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics - Science Library</title>
+    <meta name="description" content="Learn Physics with comprehensive lessons covering mechanics, electricity, waves, and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-atom"></i>
+            </div>
+            <div class="subject-info">
+                <h1>Physics</h1>
+                <p>Discover the fundamental laws that govern the universe</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Mechanics</h2>
+                
+                <div class="chapter-content">
+                    <p>Mechanics is the branch of physics dealing with the motion of bodies under the action of forces.</p>
+                    
+                    <h3>1.1 Newton's Laws of Motion</h3>
+                    <p>Newton's laws of motion are three physical laws that laid the foundation for classical mechanics.</p>
+                    
+                    <div class="formula">
+                        First Law: F = 0 ⇒ a = 0 (Object at rest stays at rest)<br>
+                        Second Law: F = ma<br>
+                        Third Law: F₁₂ = -F₂₁ (Action-Reaction)
+                    </div>
+                    
+                    <h3>1.2 Energy and Work</h3>
+                    <p>Work is done when a force causes displacement. Energy is the capacity to do work.</p>
+                    
+                    <div class="formula">
+                        Work: W = F × d × cos(θ)<br>
+                        Kinetic Energy: KE = ½mv²<br>
+                        Potential Energy: PE = mgh
+                    </div>
+                </div>
+            </section>
+
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Electricity</h2>
+                
+                <div class="chapter-content">
+                    <p>Electricity is the set of physical phenomena associated with the presence and motion of matter that has a property of electric charge.</p>
+                    
+                    <h3>2.1 Ohm's Law</h3>
+                    <p>Ohm's law states that the current through a conductor between two points is directly proportional to the voltage across the two points.</p>
+                    
+                    <div class="formula">
+                        V = IR<br>
+                        Where V = voltage, I = current, R = resistance
+                    </div>
+                    
+                    <h3>2.2 Electric Circuits</h3>
+                    <p>An electric circuit is a path in which electrons from a voltage or current source flow.</p>
+                </div>
+            </section>
+
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Waves and Optics</h2>
+                
+                <div class="chapter-content">
+                    <p>Waves are disturbances that transfer energy through matter or space.</p>
+                    
+                    <h3>3.1 Wave Properties</h3>
+                    <p>Waves are characterized by wavelength, frequency, period, and amplitude.</p>
+                    
+                    <div class="formula">
+                        Wave Speed: v = fλ<br>
+                        Where f = frequency, λ = wavelength
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=physics" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take Physics Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
