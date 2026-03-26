@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry - Science Library</title>
+    <meta name="description" content="Learn Chemistry - Organic, Inorganic, and Physical Chemistry.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-flask"></i>
+            </div>
+            <div class="subject-info">
+                <h1>Chemistry</h1>
+                <p>Organic, Inorganic, and Physical Chemistry</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Atomic Structure</h2>
+                <div class="chapter-content">
+                    <p>The fundamental structure of matter.</p>
+                    
+                    <h3>1.1 Subatomic Particles</h3>
+                    <ul>
+                        <li>Protons: Positive charge, in nucleus</li>
+                        <li>Neutrons: No charge, in nucleus</li>
+                        <li>Electrons: Negative charge, orbit nucleus</li>
+                    </ul>
+                    
+                    <h3>1.2 Atomic Number and Mass</h3>
+                    <div class="formula">Atomic Number = Number of Protons</div>
+                    <div class="formula">Mass Number = Protons + Neutrons</div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Periodic Table</h2>
+                <div class="chapter-content">
+                    <p>Organization of chemical elements.</p>
+                    
+                    <h3>2.1 Groups and Periods</h3>
+                    <p>Vertical columns are groups (families), horizontal rows are periods.</p>
+                    
+                    <h3>2.2 Periodic Trends</h3>
+                    <ul>
+                        <li>Atomic radius decreases across a period</li>
+                        <li>Electronegativity increases across a period</li>
+                        <li>Metals on left, non-metals on right</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Chemical Bonds</h2>
+                <div class="chapter-content">
+                    <p>How atoms combine to form compounds.</p>
+                    
+                    <h3>3.1 Ionic Bonds</h3>
+                    <p>Transfer of electrons between metals and non-metals.</p>
+                    
+                    <h3>3.2 Covalent Bonds</h3>
+                    <p>Sharing of electrons between non-metals.</p>
+                    
+                    <h3>3.3 Metallic Bonds</h3>
+                    <p>Sea of electrons in metal structures.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=chemistry" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take Chemistry Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
