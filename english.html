@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Language - Science Library</title>
+    <meta name="description" content="Learn English Language - Grammar, Comprehension, and Composition.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-language"></i>
+            </div>
+            <div class="subject-info">
+                <h1>English Language</h1>
+                <p>Grammar, Comprehension, and Composition</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Parts of Speech</h2>
+                <div class="chapter-content">
+                    <p>Understanding the building blocks of English sentences.</p>
+                    
+                    <h3>1.1 Nouns</h3>
+                    <p>Nouns are naming words. They name people, places, things, or ideas.</p>
+                    <ul>
+                        <li>Proper nouns: Specific names (London, John)</li>
+                        <li>Common nouns: General names (city, boy)</li>
+                        <li>Abstract nouns: Ideas (love, freedom)</li>
+                    </ul>
+                    
+                    <h3>1.2 Verbs</h3>
+                    <p>Verbs express action or state of being.</p>
+                    <ul>
+                        <li>Action verbs: run, think, write</li>
+                        <li>Linking verbs: am, is, are, was, were</li>
+                        <li>Helping verbs: have, do, will, can</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Tenses</h2>
+                <div class="chapter-content">
+                    <p>Verb tenses indicate time of action.</p>
+                    
+                    <h3>2.1 Present Tense</h3>
+                    <p>Used for current actions or habits.</p>
+                    <div class="formula">Subject + verb (s/es for third person)</div>
+                    
+                    <h3>2.2 Past Tense</h3>
+                    <p>Used for completed actions.</p>
+                    <div class="formula">Subject + verb-ed (regular) / irregular form</div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Comprehension Skills</h2>
+                <div class="chapter-content">
+                    <p>Strategies for understanding written texts.</p>
+                    
+                    <h3>3.1 Skimming and Scanning</h3>
+                    <p>Skimming for main ideas, scanning for specific information.</p>
+                    
+                    <h3>3.2 Inference</h3>
+                    <p>Reading between the lines to understand implied meaning.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=english" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take English Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
