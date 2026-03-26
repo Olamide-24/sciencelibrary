@@ -12,7 +12,7 @@ import {
     orderBy
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const ADMIN_PIN = '123456'; // CHANGE THIS!
+const ADMIN_PIN = '753550'; // CHANGE THIS!
 
 let currentUserData = null;
 let pinValue = '';
