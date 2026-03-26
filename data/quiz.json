@@ -1,4 +1,4 @@
-
+{
     "mathematics": [
         {
             "question": "What is the value of x in the equation 2x + 5 = 15?",
@@ -41,6 +41,16 @@
             "question": "Which law states that energy cannot be created or destroyed?",
             "options": ["Newton's First Law", "Law of Conservation of Energy", "Ohm's Law", "Boyle's Law"],
             "correct": 1
+        },
+        {
+            "question": "What is the speed of light in vacuum?",
+            "options": ["3 × 10^8 m/s", "3 × 10^6 m/s", "3 × 10^10 m/s", "3 × 10^4 m/s"],
+            "correct": 0
+        },
+        {
+            "question": "What type of lens is used to correct myopia?",
+            "options": ["Convex lens", "Concave lens", "Cylindrical lens", "Bifocal lens"],
+            "correct": 1
         }
     ],
     "chemistry": [
@@ -57,6 +67,16 @@
         {
             "question": "Which gas is most abundant in Earth's atmosphere?",
             "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+            "correct": 2
+        },
+        {
+            "question": "What is the formula of sulfuric acid?",
+            "options": ["HCl", "H2SO4", "HNO3", "H2CO3"],
+            "correct": 1
+        },
+        {
+            "question": "How many electrons does a neutral carbon atom have?",
+            "options": ["4", "5", "6", "12"],
             "correct": 2
         }
     ],
@@ -75,10 +95,20 @@
             "question": "What is the process by which plants make their food?",
             "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
             "correct": 1
+        },
+        {
+            "question": "What is the largest organ in the human body?",
+            "options": ["Heart", "Brain", "Liver", "Skin"],
+            "correct": 3
+        },
+        {
+            "question": "How many chromosomes do humans have?",
+            "options": ["23", "46", "48", "22"],
+            "correct": 1
         }
     ],
     "english": [],
     "computer": [],
     "agriculture": [],
     "further-math": []
-        
+}
