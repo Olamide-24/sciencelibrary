@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathematics - Science Library</title>
+    <meta name="description" content="Learn Mathematics with comprehensive lessons and interactive content.">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,31 +41,94 @@
             </div>
             <div class="subject-info">
                 <h1>Mathematics</h1>
-                <p>Algebra, Geometry, Calculus & more</p>
+                <p>Explore the world of numbers, equations, and mathematical reasoning</p>
             </div>
         </header>
 
+        <!-- READING CONTENT - SCROLL TO READ -->
         <div class="reading-container">
+            
+            <!-- CHAPTER 1 -->
             <section class="chapter">
-                <h2 class="chapter-title">Chapter 1: Introduction</h2>
+                <h2 class="chapter-title">Chapter 1: Algebra Fundamentals</h2>
+                
                 <div class="chapter-content">
-                    <p>Mathematics is the study of numbers, quantities, and shapes. It is used to solve problems in everyday life, science, engineering, and business.</p>
+                    <p>Algebra is the branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables.</p>
+                    
+                    <h3>1.1 Variables and Expressions</h3>
+                    <p>A variable is a symbol for a number we don't know yet. It is usually a letter like x or y. An expression is a group of terms (the terms are separated by + or - signs).</p>
+                    
+                    <div class="formula">
+                        Example: 3x + 5 = 11<br>
+                        Where x is the variable we need to find
+                    </div>
+                    
+                    <h3>1.2 Solving Linear Equations</h3>
+                    <p>To solve a linear equation, we isolate the variable on one side of the equation. We do this by performing the same operation on both sides of the equation.</p>
+                    
+                    <ul>
+                        <li>Add or subtract the same number from both sides</li>
+                        <li>Multiply or divide both sides by the same non-zero number</li>
+                        <li>Simplify both sides</li>
+                    </ul>
                 </div>
             </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Geometry Basics</h2>
+                
+                <div class="chapter-content">
+                    <p>Geometry is concerned with the properties and relations of points, lines, surfaces, solids, and higher dimensional analogs.</p>
+                    
+                    <h3>2.1 Points, Lines, and Planes</h3>
+                    <p>A point is a location in space. A line is a set of points extending infinitely in two directions. A plane is a flat surface extending infinitely in all directions.</p>
+                    
+                    <h3>2.2 Angles</h3>
+                    <p>An angle is formed by two rays sharing a common endpoint. Angles are measured in degrees (°) or radians.</p>
+                    
+                    <div class="formula">
+                        Types of angles:<br>
+                        • Acute: less than 90°<br>
+                        • Right: exactly 90°<br>
+                        • Obtuse: between 90° and 180°<br>
+                        • Straight: exactly 180°
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Calculus Introduction</h2>
+                
+                <div class="chapter-content">
+                    <p>Calculus is the mathematical study of continuous change, in the same way that geometry is the study of shape and algebra is the study of generalizations of arithmetic operations.</p>
+                    
+                    <h3>3.1 Limits</h3>
+                    <p>The limit of a function is a fundamental concept in calculus and analysis concerning the behavior of that function near a particular input.</p>
+                    
+                    <h3>3.2 Derivatives</h3>
+                    <p>The derivative of a function of a real variable measures the sensitivity to change of the function value with respect to a change in its argument.</p>
+                    
+                    <div class="formula">
+                        Power Rule: d/dx(xⁿ) = nxⁿ⁻¹
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADD MORE CHAPTERS AS NEEDED -->
+
         </div>
 
         <div class="quiz-access">
-            <a href="quiz.html?subject=mathematics" class="btn btn-quiz">
+            <a href="quiz.html?subject=mathematics" class="btn btn-quiz btn-primary">
                 <i class="fas fa-question-circle"></i>
                 Take Mathematics Quiz
             </a>
         </div>
     </main>
 
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
     <script type="module" src="js/firebase-config.js"></script>
     <script type="module" src="js/subjects.js"></script>
 </body>
-</html>
-
+                    </html>
