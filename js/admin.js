@@ -136,7 +136,7 @@ window.searchUser = async function() {
     // Validate format
     const regIdPattern = /^SCI-\d{4}-[A-Z0-9]{4}$/;
     if (!regIdPattern.test(regId)) {
-        searchError.querySelector('span').textContent = 'Invalid format. Use: SCI-YYYY-XXXX (e.g., SCI-2026-GX0S)';
+        searchError.querySelector('span').textContent = 'Invalid format. Use: SCI-YYYY-XXXX (e.g., SCI-2026-ABCD)';
         searchError.classList.add('show');
         return;
     }
