@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science - Science Library</title>
+    <meta name="description" content="Learn Computer Science - Programming, Hardware, and Networking.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="subject-info">
+                <h1>Computer Science</h1>
+                <p>Programming, Hardware, and Networking</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Computer Fundamentals</h2>
+                <div class="chapter-content">
+                    <p>Basic components and operation of computers.</p>
+                    
+                    <h3>1.1 Hardware Components</h3>
+                    <ul>
+                        <li>CPU: Central Processing Unit - the brain</li>
+                        <li>RAM: Random Access Memory - temporary storage</li>
+                        <li>Storage: HDD/SSD - permanent storage</li>
+                        <li>Input/Output devices: Keyboard, mouse, monitor</li>
+                    </ul>
+                    
+                    <h3>1.2 Software Types</h3>
+                    <ul>
+                        <li>System software: Operating systems</li>
+                        <li>Application software: Programs for specific tasks</li>
+                        <li>Programming software: Tools for coding</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Programming Basics</h2>
+                <div class="chapter-content">
+                    <p>Introduction to programming concepts.</p>
+                    
+                    <h3>2.1 Data Types</h3>
+                    <ul>
+                        <li>Integers: Whole numbers</li>
+                        <li>Floats: Decimal numbers</li>
+                        <li>Strings: Text data</li>
+                        <li>Boolean: True/False values</li>
+                    </ul>
+                    
+                    <h3>2.2 Control Structures</h3>
+                    <div class="formula">if (condition) { execute code }</div>
+                    <div class="formula">for (initialization; condition; increment) { loop }</div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Networking</h2>
+                <div class="chapter-content">
+                    <p>Connecting computers and sharing resources.</p>
+                    
+                    <h3>3.1 Network Types</h3>
+                    <ul>
+                        <li>LAN: Local Area Network (home/office)</li>
+                        <li>WAN: Wide Area Network (city/country)</li>
+                        <li>Internet: Global network of networks</li>
+                    </ul>
+                    
+                    <h3>3.2 Network Protocols</h3>
+                    <p>TCP/IP, HTTP, FTP - rules for data communication.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=computer" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take Computer Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
