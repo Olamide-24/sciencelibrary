@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Science Library</title>
+    <meta name="description" content="Science Library Admin Panel - User Management">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    
+    <!-- PIN Security Overlay -->
+    <div id="pinOverlay" class="pin-overlay">
+        <div class="pin-container">
+            <div class="pin-header">
+                <div class="pin-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Admin Access</h2>
+                <p>Enter security PIN to continue</p>
+            </div>
+            
+            <div class="pin-input-group">
+                <div class="pin-dots" id="pinDots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <input type="password" id="pinInput" maxlength="6" inputmode="numeric" autocomplete="off" placeholder="Enter 6-digit PIN">
+                <p class="pin-error" id="pinError">Invalid PIN. Please try again.</p>
+            </div>
+            
+            <div class="pin-keypad">
+                <button class="key" data-key="1">1</button>
+                <button class="key" data-key="2">2</button>
+                <button class="key" data-key="3">3</button>
+                <button class="key" data-key="4">4</button>
+                <button class="key" data-key="5">5</button>
+                <button class="key" data-key="6">6</button>
+                <button class="key" data-key="7">7</button>
+                <button class="key" data-key="8">8</button>
+                <button class="key" data-key="9">9</button>
+                <button class="key key-clear" data-key="clear"><i class="fas fa-times"></i></button>
+                <button class="key" data-key="0">0</button>
+                <button class="key key-enter" data-key="enter"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Interface -->
+    <div id="adminInterface" class="admin-interface hidden">
+        
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="admin-brand">
+                <i class="fas fa-atom"></i>
+                <span>Science Library <small>Admin</small></span>
+            </div>
+            <div class="admin-actions">
+                <button onclick="lockAdmin()" class="btn btn-outline btn-small">
+                    <i class="fas fa-lock"></i>
+                    Lock
+                </button>
+                <a href="index.html" class="btn btn-outline btn-small">
+                    <i class="fas fa-home"></i>
+                    Exit
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-card">
+                    <div class="search-header">
+                        <i class="fas fa-search"></i>
+                        <h2>User Lookup</h2>
+                        <p>Search for users by Registration ID</p>
+                    </div>
+                    
+                    <div class="search-form">
+                        <div class="search-input-group">
+                            <div class="search-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                placeholder="Enter Registration ID (e.g., SCI-2026-A8B2)"
+                                maxlength="14"
+                            >
+                            <button onclick="searchUser()" class="btn btn-primary" id="searchBtn">
+                                <span class="btn-text">Search</span>
+                                <span class="btn-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <p class="search-hint">Format: SCI-YYYY-XXXX</p>
+                    </div>
+
+                    <div class="search-error" id="searchError">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>No user found with this Registration ID</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection">
+                <div class="results-card">
+                    <div class="results-header">
+                        <i class="fas fa-user-check"></i>
+                        <h2>User Information</h2>
+                        <span class="result-badge" id="resultBadge">Found</span>
+                    </div>
+
+                    <div class="user-profile">
+                        <div class="user-avatar-large">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        
+                        <div class="user-details">
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label><i class="fas fa-user"></i> Full Name</label>
+                                    <div class="detail-value" id="userName">-</div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <label><i class="fas fa-id-card"></i> Registration ID</label>
+                                    <div class="detail-value highlight" id="userRegId">-</div>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <label><i class="fas fa-envelope"></i> Email Address</label>
+                                    <div class="detail-value" id="userEmail">-</div>
+                                </div>
+                                
+                                <div class="detail-item">
+                                    <label><i class="fas fa-calendar"></i> Member Since</label>
+                                    <div class="detail-value" id="userJoined">-</div>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-item full-width">
+                                    <label><i class="fas fa-lock"></i> Password Status</label>
+                                    <div class="detail-value password-hidden">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Encrypted (Cannot be displayed)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-stats" id="userStats">
+                        <h3><i class="fas fa-chart-bar"></i> Quiz Statistics</h3>
+                        <div class="stats-grid" id="statsGrid">
+                            <div class="stat-item">
+                                <span class="stat-number" id="totalQuizzes">0</span>
+                                <span class="stat-label">Quizzes Taken</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="avgScore">0%</span>
+                                <span class="stat-label">Average Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="bestSubject">-</span>
+                                <span class="stat-label">Best Subject</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="lastActive">-</span>
+                                <span class="stat-label">Last Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity" id="recentActivity">
+                        <h3><i class="fas fa-history"></i> Recent Quiz History</h3>
+                        <div class="activity-list" id="activityList">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions" id="quickActions">
+                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                <div class="actions-grid">
+                    <button onclick="copyUserInfo()" class="action-btn">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy Info</span>
+                    </button>
+                    <button onclick="printUserInfo()" class="action-btn">
+                        <i class="fas fa-print"></i>
+                        <span>Print</span>
+                    </button>
+                    <button onclick="exportUserData()" class="action-btn">
+                        <i class="fas fa-download"></i>
+                        <span>Export JSON</span>
+                    </button>
+                    <button onclick="resetSearch()" class="action-btn secondary">
+                        <i class="fas fa-search"></i>
+                        <span>New Search</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Admin Footer -->
+        <footer class="admin-footer">
+            <p>&copy; 2026 Science Library Admin Panel. Secure Access Only.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Action completed</span>
+    </div>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
