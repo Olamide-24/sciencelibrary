@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Mathematics - Science Library</title>
+    <meta name="description" content="Learn Further Mathematics - Advanced Calculus, Statistics, and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="subject-page">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <i class="fas fa-atom"></i>
+            <span>Science Library</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button onclick="logout()" class="btn btn-outline btn-small">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="subject-main">
+        <header class="subject-header">
+            <div class="subject-icon-large">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="subject-info">
+                <h1>Further Mathematics</h1>
+                <p>Advanced Calculus, Statistics, and Complex Numbers</p>
+            </div>
+        </header>
+
+        <div class="reading-container">
+            <!-- CHAPTER 1 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 1: Complex Numbers</h2>
+                <div class="chapter-content">
+                    <p>Numbers beyond the real number line.</p>
+                    
+                    <h3>1.1 Definition</h3>
+                    <p>Complex numbers have the form a + bi, where i² = -1.</p>
+                    <div class="formula">i = √(-1)</div>
+                    
+                    <h3>1.2 Operations</h3>
+                    <ul>
+                        <li>Addition: (a+bi) + (c+di) = (a+c) + (b+d)i</li>
+                        <li>Multiplication: Use FOIL and i² = -1</li>
+                        <li>Conjugate: a + bi → a - bi</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHAPTER 2 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Advanced Calculus</h2>
+                <div class="chapter-content">
+                    <p>Advanced techniques in differentiation and integration.</p>
+                    
+                    <h3>2.1 Implicit Differentiation</h3>
+                    <p>Differentiating functions not explicitly defined.</p>
+                    <div class="formula">dy/dx = - (∂F/∂x) / (∂F/∂y)</div>
+                    
+                    <h3>2.2 Parametric Equations</h3>
+                    <p>Curves defined by x = f(t), y = g(t).</p>
+                    <div class="formula">dy/dx = (dy/dt) / (dx/dt)</div>
+                </div>
+            </section>
+
+            <!-- CHAPTER 3 -->
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 3: Statistics</h2>
+                <div class="chapter-content">
+                    <p>Advanced statistical methods and probability.</p>
+                    
+                    <h3>3.1 Probability Distributions</h3>
+                    <ul>
+                        <li>Binomial: Fixed trials, two outcomes</li>
+                        <li>Normal: Bell curve, continuous data</li>
+                        <li>Poisson: Rare events</li>
+                    </ul>
+                    
+                    <h3>3.2 Hypothesis Testing</h3>
+                    <p>Testing claims using statistical evidence.</p>
+                    <div class="formula">H₀: μ = μ₀ vs H₁: μ ≠ μ₀</div>
+                </div>
+            </section>
+        </div>
+
+        <div class="quiz-access">
+            <a href="quiz.html?subject=further-math" class="btn btn-quiz btn-primary">
+                <i class="fas fa-question-circle"></i>
+                Take Further Math Quiz
+            </a>
+        </div>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/subjects.js"></script>
+</body>
+</html>
