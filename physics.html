@@ -48,77 +48,594 @@
         <div class="reading-container">
             
             <section class="chapter">
-                <h2 class="chapter-title">Chapter 1: Mechanics</h2>
+                <h2 class="chapter-title">Chapter 1: Foundations of Physics</h2>
                 
                 <div class="chapter-content">
-                    <p>Mechanics is the branch of physics dealing with the motion of bodies under the action of forces.</p>
+                    <p>Physics is the branch of science that studies matter, energy, motion, forces, and how everything in the universe behaves.</p>
                     
-                    <h3>1.1 Newton's Laws of Motion</h3>
-                    <p>Newton's laws of motion are three physical laws that laid the foundation for classical mechanics.</p>
+                    <h3>1.1 What is Physics?</h3>
+                    <p>Physics explains fundamental phenomena in our world:</p>
+                    <ul>
+                        <li>Why a ball falls down → Gravity</li>
+                        <li>Why a car moves → Force & motion</li>
+                        <li>Why we see light → Optics</li>
+                    </ul>
                     
+                    <h3>1.2 Physical Quantities</h3>
+                    <p>A physical quantity is anything that can be measured.</p>
+                    
+                    <h4>Fundamental Quantities:</h4>
+                    <ul>
+                        <li>Length (meter, m)</li>
+                        <li>Mass (kilogram, kg)</li>
+                        <li>Time (second, s)</li>
+                        <li>Temperature (kelvin, K)</li>
+                        <li>Electric current (ampere, A)</li>
+                        <li>Amount of substance (mole, mol)</li>
+                        <li>Luminous intensity (candela, cd)</li>
+                    </ul>
+                    
+                    <h4>Derived Quantities:</h4>
                     <div class="formula">
-                        First Law: F = 0 ⇒ a = 0 (Object at rest stays at rest)<br>
-                        Second Law: F = ma<br>
-                        Third Law: F₁₂ = -F₂₁ (Action-Reaction)
+                        Velocity = distance ÷ time<br>
+                        Force = mass × acceleration<br>
+                        Density = mass ÷ volume
                     </div>
                     
-                    <h3>1.2 Energy and Work</h3>
-                    <p>Work is done when a force causes displacement. Energy is the capacity to do work.</p>
+                    <h3>1.3 SI Units</h3>
+                    <p>Standard system used worldwide:</p>
+                    <ul>
+                        <li>Length → meter (m)</li>
+                        <li>Mass → kilogram (kg)</li>
+                        <li>Time → second (s)</li>
+                    </ul>
                     
+                    <h3>1.4 Measurement Instruments</h3>
+                    <ul>
+                        <li>Meter rule → length</li>
+                        <li>Vernier caliper → more accurate length</li>
+                        <li>Micrometer screw gauge → very small measurements</li>
+                        <li>Stopwatch → time</li>
+                    </ul>
+                    
+                    <h3>1.5 Scalars and Vectors</h3>
                     <div class="formula">
-                        Work: W = F × d × cos(θ)<br>
+                        <strong>Scalars:</strong> Magnitude only (mass, time, temperature)<br>
+                        <strong>Vectors:</strong> Magnitude + direction (velocity, force, displacement)<br><br>
+                        Example: 5 m → scalar | 5 m North → vector
+                    </div>
+                    
+                    <h3>1.6 Measurement Errors</h3>
+                    <ul>
+                        <li><strong>Systematic error:</strong> Faulty instrument</li>
+                        <li><strong>Random error:</strong> Human mistakes</li>
+                    </ul>
+                    
+                    <h3>1.7 Accuracy vs Precision</h3>
+                    <ul>
+                        <li><strong>Accuracy:</strong> Close to true value</li>
+                        <li><strong>Precision:</strong> Consistency</li>
+                    </ul>
+                    
+                    <h3>1.8 Dimensional Analysis</h3>
+                    <p>Used to check equations and convert units:</p>
+                    <div class="formula">
+                        Velocity → m/s<br>
+                        Force → kg·m/s²
+                    </div>
+                </div>
+            </section>
+
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 2: Mechanics (Motion & Forces)</h2>
+                
+                <div class="chapter-content">
+                    <p>Mechanics studies motion, forces, energy, and how objects move and interact. Kinematics is the study of motion without considering the cause (force).</p>
+                    
+                    <h3>2.1 Key Terms</h3>
+                    <div class="formula">
+                        <strong>Distance:</strong> Total path traveled (scalar)<br>
+                        <strong>Displacement:</strong> Shortest path in a direction (vector)<br><br>
+                        Example: Walking 10 m in a circle → distance = 10 m, displacement = 0 m
+                    </div>
+                    
+                    <h3>2.2 Speed and Velocity</h3>
+                    <div class="formula">
+                        Speed = distance ÷ time (scalar)<br>
+                        Velocity = displacement ÷ time (vector)<br><br>
+                        Example: 100 m in 10 s → Speed = 10 m/s<br>
+                        With direction → Velocity = 10 m/s North
+                    </div>
+                    
+                    <h3>2.3 Acceleration</h3>
+                    <p>Rate of change of velocity:</p>
+                    <div class="formula">
+                        a = (v - u) / t<br>
+                        Where: a = acceleration, v = final velocity, u = initial velocity, t = time<br><br>
+                        Example: 0 m/s to 20 m/s in 5 s → a = 4 m/s²
+                    </div>
+                    
+                    <h3>2.4 Equations of Motion</h3>
+                    <div class="formula">
+                        v = u + at<br>
+                        s = ut + ½at²<br>
+                        v² = u² + 2as<br><br>
+                        Example: u = 0, a = 2 m/s², t = 3 s → v = 6 m/s
+                    </div>
+                    
+                    <h3>2.5 Newton's Laws of Motion</h3>
+                    <div class="formula">
+                        <strong>First Law:</strong> Object remains at rest or in uniform motion unless acted upon by a force<br><br>
+                        <strong>Second Law:</strong> F = ma<br>
+                        Example: m = 5 kg, a = 2 m/s² → F = 10 N<br><br>
+                        <strong>Third Law:</strong> For every action, there is an equal and opposite reaction
+                    </div>
+                    
+                    <h3>2.6 Friction</h3>
+                    <p>Force that opposes motion:</p>
+                    <ul>
+                        <li>Static friction</li>
+                        <li>Kinetic friction</li>
+                    </ul>
+                    
+                    <h3>2.7 Circular Motion</h3>
+                    <p>Motion in a circle requires centripetal force and involves continuous change in direction.</p>
+                    
+                    <h3>2.8 Work, Energy, and Power</h3>
+                    <div class="formula">
+                        Work: W = F × d<br>
                         Kinetic Energy: KE = ½mv²<br>
-                        Potential Energy: PE = mgh
+                        Potential Energy: PE = mgh<br>
+                        Power: P = W / t<br><br>
+                        Example: 100 J in 5 s → Power = 20 W
+                    </div>
+                    
+                    <h3>2.9 Momentum and Impulse</h3>
+                    <div class="formula">
+                        Momentum: p = mv<br>
+                        Impulse: Ft = Δp<br><br>
+                        <strong>Law of Conservation of Momentum:</strong><br>
+                        Total momentum before = Total momentum after
+                    </div>
+                    
+                    <h3>2.10 Gravitation</h3>
+                    <p>Force of attraction between masses:</p>
+                    <div class="formula">
+                        F = G(m₁m₂/r²)<br><br>
+                        Gravity causes objects to fall toward Earth
                     </div>
                 </div>
             </section>
 
             <section class="chapter">
-                <h2 class="chapter-title">Chapter 2: Electricity</h2>
+                <h2 class="chapter-title">Chapter 3: Properties of Matter</h2>
                 
                 <div class="chapter-content">
-                    <p>Electricity is the set of physical phenomena associated with the presence and motion of matter that has a property of electric charge.</p>
+                    <p>Properties of matter describe how substances behave when forces are applied, heated, cooled, or when they flow and deform.</p>
                     
-                    <h3>2.1 Ohm's Law</h3>
-                    <p>Ohm's law states that the current through a conductor between two points is directly proportional to the voltage across the two points.</p>
+                    <h3>3.1 Elasticity</h3>
+                    <p>Ability of a material to return to its original shape and size after removing the applied force.</p>
                     
+                    <h4>Types of Deformation:</h4>
+                    <ul>
+                        <li><strong>Elastic deformation:</strong> Temporary (returns back)</li>
+                        <li><strong>Plastic deformation:</strong> Permanent (does NOT return)</li>
+                    </ul>
+                    
+                    <h4>Hooke's Law:</h4>
                     <div class="formula">
-                        V = IR<br>
-                        Where V = voltage, I = current, R = resistance
+                        F = kx<br>
+                        Where: F = applied force, k = spring constant, x = extension<br><br>
+                        Applies only within the elastic limit
                     </div>
                     
-                    <h3>2.2 Electric Circuits</h3>
-                    <p>An electric circuit is a path in which electrons from a voltage or current source flow.</p>
+                    <h4>Stress and Strain:</h4>
+                    <div class="formula">
+                        Stress = F / A (Force per unit area)<br>
+                        Strain = ΔL / L (Ratio of extension to original length)<br><br>
+                        Young's Modulus = Stress / Strain<br>
+                        (Measures how stiff a material is)
+                    </div>
+                    
+                    <h3>3.2 Surface Tension</h3>
+                    <p>Force that makes the surface of a liquid act like a tight stretched membrane.</p>
+                    <ul>
+                        <li>Cause: Molecules at surface pulled inward</li>
+                        <li>Effects: Liquids form spherical drops, surface resists breaking</li>
+                        <li>Examples: Water droplets are round, needle floats on water, insects walk on water</li>
+                    </ul>
+                    
+                    <h3>3.3 Viscosity</h3>
+                    <p>Internal resistance of a fluid to flow.</p>
+                    <ul>
+                        <li><strong>High viscosity:</strong> Flows slowly (honey, oil)</li>
+                        <li><strong>Low viscosity:</strong> Flows easily (water, alcohol)</li>
+                    </ul>
+                    
+                    <h4>Factors Affecting Viscosity:</h4>
+                    <ul>
+                        <li>Liquids → viscosity decreases when heated</li>
+                        <li>Gases → viscosity increases when heated</li>
+                    </ul>
+                    
+                    <h3>3.4 Pressure in Fluids</h3>
+                    <div class="formula">
+                        P = F / A<br><br>
+                        Pressure in Liquid: P = ρgh<br>
+                        Where: ρ = density, g = gravity, h = depth
+                    </div>
+                    
+                    <h4>Key Principles:</h4>
+                    <ul>
+                        <li>Pressure increases with depth</li>
+                        <li>Pressure acts in all directions</li>
+                        <li>Same depth → same pressure</li>
+                    </ul>
+                    
+                    <h3>3.5 Density</h3>
+                    <div class="formula">
+                        Density = mass / volume<br><br>
+                        High density → tightly packed particles<br>
+                        Low density → loosely packed particles<br><br>
+                        Examples: Iron sinks (high density), Wood floats (lower density than water)
+                    </div>
+                    
+                    <h3>3.6 Flotation (Buoyancy)</h3>
+                    <p>Ability of an object to float in a fluid.</p>
+                    
+                    <h4>Archimedes' Principle:</h4>
+                    <div class="formula">
+                        Upthrust = weight of fluid displaced<br><br>
+                        Object floats → Upthrust ≥ Weight<br>
+                        Object sinks → Weight > Upthrust
+                    </div>
+                    
+                    <h4>Examples:</h4>
+                    <ul>
+                        <li><strong>Ship:</strong> Large volume displaces more water, upthrust balances weight → floats</li>
+                        <li><strong>Stone:</strong> Small volume, heavy → sinks</li>
+                        <li><strong>Ice:</strong> Less dense than water → floats</li>
+                    </ul>
                 </div>
             </section>
 
             <section class="chapter">
-                <h2 class="chapter-title">Chapter 3: Waves and Optics</h2>
+                <h2 class="chapter-title">Chapter 4: Heat & Thermodynamics</h2>
                 
                 <div class="chapter-content">
-                    <p>Waves are disturbances that transfer energy through matter or space.</p>
+                    <p>Heat is a form of energy that flows from a hotter body to a colder body. Thermodynamics is the study of heat, temperature, and energy transfer.</p>
                     
-                    <h3>3.1 Wave Properties</h3>
-                    <p>Waves are characterized by wavelength, frequency, period, and amplitude.</p>
+                    <h3>4.1 Temperature & Thermometers</h3>
+                    <p>Temperature is the measure of how hot or cold a body is (average kinetic energy of particles).</p>
+                    
+                    <h4>Temperature Scales:</h4>
+                    <ul>
+                        <li>Celsius (°C)</li>
+                        <li>Kelvin (K) → SI unit</li>
+                        <li>Fahrenheit (°F)</li>
+                    </ul>
                     
                     <div class="formula">
-                        Wave Speed: v = fλ<br>
-                        Where f = frequency, λ = wavelength
+                        Conversion: K = °C + 273
                     </div>
+                    
+                    <h4>Types of Thermometers:</h4>
+                    <ul>
+                        <li>Liquid-in-glass (mercury/alcohol)</li>
+                        <li>Digital thermometer</li>
+                        <li>Thermocouple</li>
+                    </ul>
+                    
+                    <h3>4.2 Heat Transfer</h3>
+                    
+                    <h4>(A) Conduction:</h4>
+                    <p>Heat transfer through a material without movement of the material.</p>
+                    <ul>
+                        <li>Particles vibrate and pass energy to neighbors</li>
+                        <li>Examples: Metal spoon gets hot in tea, cooking pot heats up</li>
+                    </ul>
+                    
+                    <h4>(B) Convection:</h4>
+                    <p>Heat transfer through movement of fluids.</p>
+                    <ul>
+                        <li>Hot fluid rises, cold fluid sinks</li>
+                        <li>Examples: Boiling water circulation, sea breeze & land breeze</li>
+                    </ul>
+                    
+                    <h4>(C) Radiation:</h4>
+                    <p>Heat transfer through electromagnetic waves (does NOT require a medium).</p>
+                    <ul>
+                        <li>Examples: Heat from the Sun, feeling heat from fire</li>
+                    </ul>
+                    
+                    <h3>4.3 Gas Laws</h3>
+                    
+                    <h4>Boyle's Law (Constant Temperature):</h4>
+                    <div class="formula">
+                        P ∝ 1/V<br>
+                        Pressure increases when volume decreases
+                    </div>
+                    
+                    <h4>Charles's Law (Constant Pressure):</h4>
+                    <div class="formula">
+                        V ∝ T<br>
+                        Volume increases with temperature
+                    </div>
+                    
+                    <h4>Pressure Law (Constant Volume):</h4>
+                    <div class="formula">
+                        P ∝ T<br>
+                        Pressure increases with temperature
+                    </div>
+                    
+                    <h4>Combined Gas Law:</h4>
+                    <div class="formula">
+                        PV / T = constant
+                    </div>
+                    
+                    <h3>4.4 First Law of Thermodynamics</h3>
+                    <p>Energy cannot be created or destroyed, only transformed.</p>
+                    <div class="formula">
+                        Q = ΔU + W<br>
+                        Where: Q = heat supplied, ΔU = change in internal energy, W = work done
+                    </div>
+                    
+                    <h3>4.5 Second Law of Thermodynamics</h3>
+                    <p>Heat cannot flow from a colder body to a hotter body without external work.</p>
+                    <ul>
+                        <li>Heat flows naturally: Hot → Cold</li>
+                        <li>No machine is 100% efficient</li>
+                        <li>Some energy is always lost as heat</li>
+                    </ul>
+                    
+                    <h3>4.6 Heat Capacity & Specific Heat</h3>
+                    <div class="formula">
+                        Q = mcΔT<br>
+                        Where: m = mass, c = specific heat, ΔT = temperature change<br><br>
+                        Example: Water heats slowly → high specific heat
+                    </div>
+                    
+                    <h3>4.7 Change of State</h3>
+                    <p>Matter changes state when heat is added or removed:</p>
+                    <ul>
+                        <li>Melting (solid → liquid)</li>
+                        <li>Freezing (liquid → solid)</li>
+                        <li>Boiling (liquid → gas)</li>
+                        <li>Condensation (gas → liquid)</li>
+                    </ul>
+                    
+                    <h4>Latent Heat:</h4>
+                    <p>Heat required to change state without temperature change.</p>
+                    <p>Example: Ice melts at 0°C but temperature stays constant.</p>
                 </div>
             </section>
 
-        </div>
+             <section class="chapter">
+                <h2 class="chapter-title">Chapter 5: Waves & Oscillations</h2>
+                
+                <div class="chapter-content">
+                    <p>A wave is a disturbance that transfers energy from one place to another without transporting matter permanently.</p>
+                    
+                    <h3>5.1 Types of Waves</h3>
+                    
+                    <h4>Mechanical Waves:</h4>
+                    <ul>
+                        <li>Require a medium to travel</li>
+                        <li>Cannot travel in vacuum</li>
+                        <li>Examples: Sound waves, water waves</li>
+                    </ul>
+                    
+                    <h4>Electromagnetic Waves:</h4>
+                    <ul>
+                        <li>Do NOT require a medium</li>
+                        <li>Can travel in vacuum</li>
+                        <li>Examples: Light, radio waves, X-rays</li>
+                    </ul>
+                    
+                    <h4>Transverse Waves:</h4>
+                    <ul>
+                        <li>Particles move perpendicular to wave direction</li>
+                        <li>Examples: Light waves, water waves</li>
+                    </ul>
+                    
+                    <h4>Longitudinal Waves:</h4>
+                    <ul>
+                        <li>Particles move parallel to wave direction</li>
+                        <li>Example: Sound waves</li>
+                    </ul>
+                    
+                    <h3>5.2 Wave Properties</h3>
+                    <div class="formula">
+                        <strong>Amplitude (A):</strong> Maximum displacement from equilibrium<br>
+                        <strong>Wavelength (λ):</strong> Distance between two consecutive identical points (meters)<br>
+                        <strong>Frequency (f):</strong> Number of oscillations per second (Hz)<br>
+                        <strong>Period (T):</strong> Time for one complete oscillation<br><br>
+                        T = 1 / f<br><br>
+                        <strong>Wave Speed:</strong> v = fλ
+                    </div>
+                    
+                    <h3>5.3 Simple Harmonic Motion (SHM)</h3>
+                    <p>Motion where the restoring force is proportional to displacement and direction is always toward equilibrium.</p>
+                    <div class="formula">
+                        F = -kx<br>
+                        Where: F = restoring force, k = spring constant, x = displacement<br><br>
+                        Time Period for a spring: T = 2π √(m/k)<br>
+                        Where: m = mass, k = spring constant<br><br>
+                        Key Idea: More mass → slower oscillation | Stiffer spring → faster oscillation
+                    </div>
+                    
+                    <h3>5.4 Energy in SHM</h3>
+                    <ul>
+                        <li>Total energy is constant</li>
+                        <li>Energy transforms between Kinetic Energy (KE) and Potential Energy (PE)</li>
+                        <li>At mean position → KE is maximum</li>
+                        <li>At extreme positions → PE is maximum</li>
+                    </ul>
+                    
+                    <h3>5.5 Sound Waves</h3>
+                    <ul>
+                        <li>Sound is a longitudinal wave</li>
+                        <li>Requires a medium (cannot travel in vacuum)</li>
+                        <li>Faster in solids, slower in gases</li>
+                    </ul>
+                    
+                    <h4>Characteristics of Sound:</h4>
+                    <ul>
+                        <li><strong>Pitch:</strong> Depends on frequency (high frequency → high pitch)</li>
+                        <li><strong>Loudness:</strong> Depends on amplitude (higher amplitude → louder)</li>
+                        <li><strong>Quality (Timbre):</strong> Distinguishes different sounds</li>
+                    </ul>
+                    
+                    <h3>5.6 Doppler Effect</h3>
+                    <p>Change in frequency due to relative motion between source and observer.</p>
+                    <ul>
+                        <li>Approaching → frequency increases</li>
+                        <li>Receding → frequency decreases</li>
+                        <li>Example: Ambulance siren sounds higher when approaching, lower when moving away</li>
+                    </ul>
+                    
+                    <h3>5.7 Superposition of Waves</h3>
+                    <p>When two waves meet, the resultant displacement is the sum of individual displacements.</p>
+                    
+                    <h4>Types:</h4>
+                    <ul>
+                        <li><strong>Constructive Interference:</strong> Waves add up, amplitude increases</li>
+                        <li><strong>Destructive Interference:</strong> Waves cancel out, amplitude decreases</li>
+                    </ul>
+                    
+                    <h3>5.8 Standing Waves</h3>
+                    <p>Formed when two waves of same frequency move in opposite directions.</p>
+                    <ul>
+                        <li><strong>Nodes:</strong> Zero displacement</li>
+                        <li><strong>Antinodes:</strong> Maximum displacement</li>
+                        <li>Examples: Vibrating guitar string, air columns in pipes</li>
+                    </ul>
+                </div>
+            </section>
 
-        <div class="quiz-access">
-            <a href="quiz.html?subject=physics" class="btn btn-quiz btn-primary">
-                <i class="fas fa-question-circle"></i>
-                Take Physics Quiz
-            </a>
-        </div>
-    </main>
-
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/subjects.js"></script>
-</body>
-</html>
+            <section class="chapter">
+                <h2 class="chapter-title">Chapter 6: Optics (Light)</h2>
+                
+                <div class="chapter-content">
+                    <p>Optics is the study of light and its behavior such as reflection, refraction, and image formation.</p>
+                    
+                    <h3>6.1 Nature of Light</h3>
+                    <ul>
+                        <li>Light is an electromagnetic wave</li>
+                        <li>Does NOT need a medium</li>
+                        <li>Can travel through vacuum</li>
+                        <li>Speed in vacuum: ≈ 3 × 10⁸ m/s</li>
+                    </ul>
+                    
+                    <h4>Dual Nature of Light:</h4>
+                    <p>Light behaves as both wave and particle (photons).</p>
+                    
+                    <h3>6.2 Reflection of Light</h3>
+                    <p>Bouncing back of light when it hits a surface.</p>
+                    
+                    <h4>Laws of Reflection:</h4>
+                    <ol>
+                        <li>Angle of incidence = Angle of reflection</li>
+                        <li>Incident ray, reflected ray, and normal lie in the same plane</li>
+                    </ol>
+                    
+                    <h4>Types of Reflection:</h4>
+                    <ul>
+                        <li><strong>Regular Reflection:</strong> Smooth surface, clear image (mirror)</li>
+                        <li><strong>Diffuse Reflection:</strong> Rough surface, scattered light (wall)</li>
+                    </ul>
+                    
+                    <h3>6.3 Mirrors</h3>
+                    
+                    <h4>Plane Mirror:</h4>
+                    <ul>
+                        <li>Flat surface</li>
+                        <li>Forms virtual, upright image</li>
+                        <li>Same size, laterally inverted</li>
+                    </ul>
+                    
+                    <h4>Concave Mirror:</h4>
+                    <ul>
+                        <li>Curved inward</li>
+                        <li>Can form real or virtual images</li>
+                        <li>Magnified or diminished images</li>
+                    </ul>
+                    
+                    <h4>Convex Mirror:</h4>
+                    <ul>
+                        <li>Curved outward</li>
+                        <li>Always forms virtual, upright, smaller image</li>
+                    </ul>
+                    
+                    <div class="formula">
+                        Mirror Formula: 1/f = 1/u + 1/v<br>
+                        Where: f = focal length, u = object distance, v = image distance<br><br>
+                        Magnification: m = v/u
+                    </div>
+                    
+                    <h3>6.4 Refraction of Light</h3>
+                    <p>Bending of light when it passes from one medium to another (due to change in speed).</p>
+                    
+                    <h4>Snell's Law:</h4>
+                    <div class="formula">
+                        n₁ sinθ₁ = n₂ sinθ₂<br><br>
+                        Refractive Index: n = c/v<br>
+                        Where: c = speed in vacuum, v = speed in medium
+                    </div>
+                    
+                    <h4>Effects of Refraction:</h4>
+                    <ul>
+                        <li>Object appears bent</li>
+                        <li>Objects in water look closer</li>
+                        <li>Mirage effect</li>
+                    </ul>
+                    
+                    <h3>6.5 Total Internal Reflection (TIR)</h3>
+                    <p>Conditions:</p>
+                    <ul>
+                        <li>Light moves from denser → rarer medium</li>
+                        <li>Angle of incidence > critical angle</li>
+                    </ul>
+                    <p>Applications: Optical fibers, endoscopes</p>
+                    
+                    <h3>6.6 Lenses</h3>
+                    
+                    <h4>Convex Lens (Converging):</h4>
+                    <ul>
+                        <li>Converges light rays</li>
+                        <li>Can form real or virtual images</li>
+                    </ul>
+                    
+                    <h4>Concave Lens (Diverging):</h4>
+                    <ul>
+                        <li>Diverges light rays</li>
+                        <li>Always forms virtual images</li>
+                    </ul>
+                    
+                    <div class="formula">
+                        Lens Formula: 1/f = 1/v - 1/u<br>
+                        Magnification: m = v/u
+                    </div>
+                    
+                    <h3>6.7 Optical Instruments</h3>
+                    <ul>
+                        <li><strong>Microscope:</strong> Views very small objects using convex lenses</li>
+                        <li><strong>Telescope:</strong> Views distant objects, magnifies far objects</li>
+                    </ul>
+                    
+                    <h3>6.8 Dispersion of Light</h3>
+                    <p>Splitting of white light into its component colors.</p>
+                    <p><strong>Spectrum Order:</strong> Red → Orange → Yellow → Green → Blue → Indigo → Violet</p>
+                    <p>Example: Prism splitting sunlight</p>
+                    
+                    <h3>6.9 Human Eye & Vision</h3>
+                    <p><strong>Parts:</strong> Cornea, Iris, Pupil, Lens, Retina</p>
+                    <p>Real, inverted image formed on retina; brain interprets as upright.</p>
+                    
+                    <h4>Common Defects:</h4>
+                    <ul>
+                        <li><strong>Myopia (Short-sightedness):</strong> Near objects clear, distant blurred</li>
+                        <li><strong>Hypermetropia (Long-sightedness):</strong> Far objects clear, near blurred</li>
+                    </ul>
+                </div>
+    </section>
